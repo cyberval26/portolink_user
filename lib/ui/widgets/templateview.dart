@@ -13,7 +13,7 @@ class TemplateView extends StatefulWidget {
 
 class _TemplateViewState extends State<TemplateView> {
   bool isLoading = false;
-  CollectionReference assignmentCollection = FirebaseFirestore.instance.collection("assignment");
+  //CollectionReference assignmentCollection = FirebaseFirestore.instance.collection("assignment");
   @override
 
   Widget build(BuildContext context) {
@@ -54,16 +54,16 @@ class _TemplateViewState extends State<TemplateView> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        /*IconButton(
-                icon: Icon(
-                    CupertinoIcons.trash_circle
-                    ,color: Colors.red,
-                ),
-                onPressed: (){
-
-                },
-              ),*/
                         IconButton(
+                          icon: Icon(
+                              CupertinoIcons.add
+                              ,color: Colors.black,
+                          ),
+                          onPressed: (){
+                            Navigator.pushReplacementNamed(context, OrderTemplate.routeName);
+                          },
+                        ),
+                        /*IconButton(
                           icon: Icon(Icons.more_horiz_rounded,
                             color: Colors.blue,),
                           onPressed: () {
@@ -178,7 +178,7 @@ class _TemplateViewState extends State<TemplateView> {
                                 }
                             );
                           },
-                        ),
+                        ),*/
                       ]
                   ),
                 ),

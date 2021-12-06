@@ -18,11 +18,11 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+     /* appBar: AppBar(
         title:Text('Register'),
         centerTitle : true,
         elevation : 0,
-      ),
+      ),*/
       resizeToAvoidBottomInset:  false,
       body:  Container(
           width: double.infinity,
@@ -160,7 +160,7 @@ class _RegisterState extends State<Register> {
                             icon : Icon(Icons.login_rounded),
                             label: Text("Register"),
                             style : ElevatedButton.styleFrom(
-                              primary : Colors.deepPurple,
+                              primary : Colors.teal[200],
                               onPrimary: Colors.white,
                               elevation: 4,
                               // primary : Colors.deepOrange[400],
@@ -172,7 +172,7 @@ class _RegisterState extends State<Register> {
                             Navigator.pushReplacementNamed(context, Login.routeName);
                           },
                           child :const Text("Already registered? Login",
-                            style : TextStyle(color: Colors.deepPurple,
+                            style : TextStyle(color: Colors.tealAccent,
                                 fontSize : 16
                             ),
                           ),

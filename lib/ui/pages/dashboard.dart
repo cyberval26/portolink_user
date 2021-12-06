@@ -21,7 +21,7 @@ class _DashboardState extends State<Dashboard> {
               padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, TemplateView.routeName);
+                  Navigator.pushReplacementNamed(context, MainMenu.routeName);
                 },
                 child: const Text("Templete View"),
                 style: ButtonStyle(
@@ -40,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/catalog');
                 },
-                child: const Text(""),
+                child: const Text("Our contact"),
                 style: ButtonStyle(
                     backgroundColor:
                     MaterialStateProperty.all(Colors.teal.shade200)),
@@ -55,7 +55,7 @@ class _DashboardState extends State<Dashboard> {
               padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, AccountView.routeName);
+                  Navigator.pushReplacementNamed(context, MyAccount.routeName);
                 },
                 child: const Text("My Account"),
                 style: ButtonStyle(

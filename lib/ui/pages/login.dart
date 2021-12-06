@@ -121,7 +121,7 @@ class _LoginState extends State<Login> {
                             icon : Icon(Icons.login_rounded),
                             label: Text("Login"),
                             style : ElevatedButton.styleFrom(
-                              primary : Colors.deepPurple,
+                              primary : Colors.teal[200],
                               onPrimary: Colors.white,
                               elevation: 4,
                             )
@@ -132,7 +132,7 @@ class _LoginState extends State<Login> {
                             Navigator.pushReplacementNamed(context, Register.routeName);
                           },
                           child :const Text("Not registered yet",
-                            style : TextStyle(color: Colors.deepPurple,
+                            style : TextStyle(color: Colors.tealAccent,
                                 fontSize : 16
                             ),
                           ),
@@ -141,8 +141,8 @@ class _LoginState extends State<Login> {
                   )
                 ],
               ),
-              /*isLoading == true
-                  ? ActivityServices.loadings() : Container()*/
+              isLoading == true
+              ? ActivityServices.loadings() : Container()
             ],
           )
       ),

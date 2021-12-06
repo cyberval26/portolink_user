@@ -27,8 +27,8 @@ class _ListTemplateState extends State<ListTemplate> {
               return ActivityServices.loadings();
             }
             return ListView(
-              children : snapshot.data.docs.map((DocumentSnapshot docs){
-                Map<String, dynamic> doc = docs as Map<String, dynamic>;
+              children : snapshot.data.docs.map((DocumentSnapshot doc){
+             //  Map<String, dynamic> doc = docs as Map<String, dynamic>;
                 Template template;
                // if (doc['templateId'] == null) {
                   template = Template(
@@ -55,10 +55,13 @@ class _ListTemplateState extends State<ListTemplate> {
     return Scaffold(
       appBar: AppBar(
         title: Text("List Data"),
+        leading: IconButton(icon:Icon(Icons.arrow_back),
+        onPressed:() =>  Navigator.pushReplacementNamed(context, Dashboard.routeName),
+        )
         // centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
       body: buildBody(),
-    );
+      );
   }
 }

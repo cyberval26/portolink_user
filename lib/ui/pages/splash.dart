@@ -20,14 +20,14 @@ class _SplashState extends State<Splash> {
   }
 
    void checkAuth(){
-     Navigator.pushReplacementNamed(context, Login.routeName);
-  //   FirebaseAuth auth = FirebaseAuth.instance;
-  //   if (auth.currentUser != null){
-  //     Navigator.pushReplacementNamed(context, MainMenu.routeName);
-  //     ActivityServices.showToast("Welcome Back " +auth.currentUser.email, Colors.green[600]);
-  //   }else{
-  //     Navigator.pushReplacementNamed(context, Login.routeName);
-  //   }
+     //Navigator.pushReplacementNamed(context, Login.routeName);
+     FirebaseAuth auth = FirebaseAuth.instance;
+    if (auth.currentUser != null){
+      Navigator.pushReplacementNamed(context, Dashboard.routeName);
+      ActivityServices.showToast("Welcome Back " +auth.currentUser.email, Colors.green[600]);
+    }else{
+      Navigator.pushReplacementNamed(context, Login.routeName);
+    }
    }
 
   @override

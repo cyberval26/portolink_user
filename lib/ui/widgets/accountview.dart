@@ -16,10 +16,11 @@ class _AccountViewState extends State<AccountView> {
   @override
   Widget build(BuildContext context) {
     Users users= widget.users;
-   /*if(users == null){
+   if(users == null){
+     ActivityServices.showToast("gagal ehe", Colors.red);
       return Container();
-   }else {*/
-    //ActivityServices.showToast("acc show Success", Colors.green);
+   }else {
+    ActivityServices.showToast("acc show Success", Colors.green);
     return Stack(
       children: [
         Container(
@@ -34,7 +35,7 @@ class _AccountViewState extends State<AccountView> {
                 icon: Icon(CupertinoIcons.pencil),
                 label: Text("Edit data"),
                 onPressed: () async{
-                 /* Navigator.push(
+               /*  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => UpdateAccount(
@@ -46,7 +47,7 @@ class _AccountViewState extends State<AccountView> {
                 },
                 style: ElevatedButton.styleFrom(
                     onPrimary: Colors.white,
-                    primary: Colors.deepPurple
+                    primary: Colors.teal[200]
                 ),
               ),
               SizedBox(height:15),
@@ -107,7 +108,7 @@ class _AccountViewState extends State<AccountView> {
               icon: Icon(Icons.logout),
               label: Text("Logout"),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple,
+                primary: Colors.teal[200],
                 onPrimary: Colors.white,
                 elevation: 4,
                 // alignment: Alignment.bottomCenter,
@@ -119,4 +120,4 @@ class _AccountViewState extends State<AccountView> {
 
    }
   }
-//}
+}

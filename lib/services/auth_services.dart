@@ -4,7 +4,7 @@ class AuthServices{
 
   static FirebaseAuth auth = FirebaseAuth.instance;
   static CollectionReference userCollection = FirebaseFirestore.instance.collection("users");
-  //static DocumentReference userDoc;
+  static DocumentReference userDoc;
 
   static Future<String>signUp(Users users) async{
     await Firebase.initializeApp();
@@ -19,8 +19,8 @@ class AuthServices{
 
     uid = userCredential.user.uid;
     //sebuah fungsi pasti asycronous jadi perlu await
-   // token = await userCredential.user.getIdToken();
-    token = (await FirebaseMessaging.instance.getToken());
+    // token = await userCredential.user.getIdToken();
+    token = await FirebaseMessaging.instance.getToken();
 
     await userCollection.doc(uid).set({
       'uid': uid,
@@ -56,7 +56,7 @@ class AuthServices{
     uid = userCredential.user.uid;
     //sebuah fungsi pasti asycronous jadi perlu await
     // token = await userCredential.user.getIdToken();
-    token = (await FirebaseMessaging.instance.getToken());
+    token = await FirebaseMessaging.instance.getToken();
 
     await userCollection.doc(uid).update({
       'isOn':'1',
