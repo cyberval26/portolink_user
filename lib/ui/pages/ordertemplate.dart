@@ -2,6 +2,21 @@ part of 'pages.dart';
 
 class OrderTemplate extends StatefulWidget {
   static const String routeName = "/ordertemplate";
+  final String templateId;
+  final String templateName;
+  final String description;
+  final String price;
+  final String photoFile;
+
+  const OrderTemplate(
+      {Key key,
+        this.templateId,
+        this.templateName,
+        this.description,
+        this.price,
+        this.photoFile,
+      })
+      : super(key: key);
   @override
   _OrderTemplateState createState() => _OrderTemplateState();
 }
@@ -9,11 +24,8 @@ class OrderTemplate extends StatefulWidget {
 class _OrderTemplateState extends State<OrderTemplate> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  final ctrlName = TextEditingController();
-  final ctrlCourse = TextEditingController();
-  final ctrlDeadline = TextEditingController();
-  final ctrlDesc = TextEditingController();
-  final ctrlPassword = TextEditingController();
+  final ctrlColor = TextEditingController();
+  final ctrlContact = TextEditingController();
   PickedFile imageFile;
   final ImagePicker  imagePicker = ImagePicker();
 
@@ -21,7 +33,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
     FilePickerResult result = await FilePicker.platform.pickFiles(allowMultiple: true);
 
     if(result != null) {
-     // List<File> files = result.paths.map((path) => File(path)).toList();
+    // List<File> files = result.paths.map((path) => File(path)).toList();
     } else {
       // User canceled the picker
     }
@@ -85,18 +97,14 @@ class _OrderTemplateState extends State<OrderTemplate> {
   //mengurangi memori ketika mengetik
   @override
   void dispose(){
-    ctrlName.dispose();
-    ctrlCourse.dispose();
-    ctrlDeadline.dispose();
-    ctrlDesc.dispose();
+    ctrlColor.dispose();
+    ctrlContact.dispose();
     super.dispose();
   }
 
   void clearForm(){
-    ctrlName.clear();
-    ctrlCourse.clear();
-    ctrlDeadline.clear();
-    ctrlDesc.clear();
+    ctrlColor.clear();
+    ctrlContact.clear();
     setState(() {
       imageFile = null;
     });
@@ -117,93 +125,132 @@ class _OrderTemplateState extends State<OrderTemplate> {
         height : double.infinity,
         child: Stack(
           children:[
-            ListView(
-              padding: EdgeInsets.all(16),
-              children: [
-                Form(
-                 key:_formKey,
-                  child:  Column(
+            Container(
+              alignment: Alignment.topCenter,
+              child: ListView(
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(20.0),
+                children: [
+                  Image.asset("assets/images/portolink.png", height: 300
+                  ),
+
+                  SizedBox(height:15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height:24),
-                      TextFormField(
-                        controller:  ctrlName,
-                        keyboardType:  TextInputType.name,
-                        decoration: InputDecoration(
-                          labelText:"Color",
-                          prefixIcon: Icon(Icons.label),
-                        //  border: OutlineInputBorder(),
-                        ),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value){
-                          if(value.isEmpty){
-                            return"Please fill the field!";
-                          }else{
-                            return null;
-                          }
-                        },
-                      ),
-                      SizedBox(height:24),
-                      TextFormField(
-                        controller:  ctrlCourse,
-                        keyboardType:  TextInputType.name,
-                        //maxLines: 3,
-                        decoration: InputDecoration(
-                          labelText:"Active contact",
-                          prefixIcon: Icon(Icons.class__outlined),
-                        //  border: OutlineInputBorder(),
-                        ),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value){
-                          if(value.isEmpty){
-                            return"Please fill the field!";
-                          }else{
-                            return null;
-                          }
-                        },
-                      ),
-                      SizedBox(height:24),
-
-                      ElevatedButton.icon(
-                          onPressed: () async {
-                            /*if(_formKey.currentState.validate() && imageFile!=null){
-                              setState(() {
-                                isLoading = true;
-                              });
-                              Assignment assignment = Assignment("",ctrlName.text,ctrlCourse.text,
-                                  ctrlDeadline.text,ctrlDesc.text,"","",FirebaseAuth.instance.currentUser.uid,"",""
-                              );
-                              await ProductServices.addProduct(assignment, imageFile).then((value){
-                                if(value == true){
-                                  Fluttertoast.showToast(msg: "Add Assignment succesfully !",
-                                  backgroundColor: Colors.green);
-                                  clearForm();
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                }else{
-                                  ActivityServices.showToast("Add Assignment failed", Colors.red);
-                                }
-                              });
-                            }else{
-                              ActivityServices.showToast("Please check form fields !", Colors.red);
-                              // bisa dikosongkan saja
-                              //Fluttertoast.showToast(msg: "Please check the fields !",backgroundColor: Colors.red);
-                            }*/
-                          },
-                          icon : Icon(Icons.save),
-                          label: Text("submit order"),
-                          style : ElevatedButton.styleFrom(
-                            onPrimary: Colors.white,
-                            primary: Colors.teal[200],
-                            elevation: 4,
-                          )
-                      ),
-
+                      Icon(Icons.person, color: Colors.black54,),
+                      Text(" "+widget.templateName, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
                     ],
                   ),
+                  SizedBox(height:15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.email, color: Colors.black54,),
+                      Text("  "+widget.description, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                    ],
+                  ),
+                  SizedBox(height:15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.phone, color: Colors.black54,),
+                      Text("  "+widget.price, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                    ],
+                  ),
+                ],
               ),
-              ]
             ),
+            Container(
+              child:ListView(
+                  padding: EdgeInsets.all(16),
+                  children: [
+                    Form(
+                      key:_formKey,
+                      child:  Column(
+                        children: [
+                          SizedBox(height:24),
+                          TextFormField(
+                            controller:  ctrlColor,
+                            keyboardType:  TextInputType.name,
+                            decoration: InputDecoration(
+                              labelText:"Color",
+                              prefixIcon: Icon(Icons.label),
+                              //  border: OutlineInputBorder(),
+                            ),
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value){
+                              if(value.isEmpty){
+                                return"Please fill the field!";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
+                          SizedBox(height:24),
+                          TextFormField(
+                            controller:  ctrlContact,
+                            keyboardType:  TextInputType.name,
+                            //maxLines: 3,
+                            decoration: InputDecoration(
+                              labelText:"Active contact",
+                              prefixIcon: Icon(Icons.class__outlined),
+                              //  border: OutlineInputBorder(),
+                            ),
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value){
+                              if(value.isEmpty){
+                                return"Please fill the field!";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
+                          SizedBox(height:24),
+
+                          ElevatedButton.icon(
+                              onPressed: () async {
+                                if(_formKey.currentState.validate() ){
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                  Order order = Order("",widget.templateName,ctrlColor.text,
+                                      ctrlContact.text,"","","");
+                                  await OrderServices.addOrder(order, imageFile).then((value){
+                                    if(value == true){
+                                      Fluttertoast.showToast(msg: "Add order succesfully !",
+                                          backgroundColor: Colors.green);
+                                      clearForm();
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                      Navigator.pushReplacementNamed(context, Dashboard.routeName);
+                                    }else{
+                                      ActivityServices.showToast("Add Order failed", Colors.red);
+                                    }
+                                  });
+                                }else{
+                                  ActivityServices.showToast("Please check form fields !", Colors.red);
+                                  // bisa dikosongkan saja
+                                  //Fluttertoast.showToast(msg: "Please check the fields !",backgroundColor: Colors.red);
+                                }
+                              },
+                              icon : Icon(Icons.save),
+                              label: Text("submit order"),
+                              style : ElevatedButton.styleFrom(
+                                onPrimary: Colors.white,
+                                primary: Colors.teal[200],
+                                elevation: 4,
+                              )
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ]
+              ) ,
+            ),
+
             isLoading == true
                 ? ActivityServices.loadings()
                 : Container()

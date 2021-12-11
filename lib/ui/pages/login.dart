@@ -37,7 +37,7 @@ class _LoginState extends State<Login> {
                     key:_formKey,
                     child: Column(
                       children: [
-                        Image.asset("assets/images/logo.png", height: 300
+                        Image.asset("assets/images/portolink.png", height: 300
                         ),
                         SizedBox(height :24),
                         TextFormField(

@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
         MyAccount.routeName : (context) => MyAccount(),
         OrderTemplate.routeName :(context) => OrderTemplate(),
         ListTemplate.routeName :(context) => ListTemplate(),
+        PendingRequest.routeName :(context) => PendingRequest(),
       },
     );
   }

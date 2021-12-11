@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
                     key:_formKey,
                     child: Column(
                       children: [
-                        Image.asset("assets/images/logo.png", height: 300),
+                        Image.asset("assets/images/portolink.png", height: 300),
                         TextFormField(
                           controller:  ctrlName,
                           keyboardType:  TextInputType.name,

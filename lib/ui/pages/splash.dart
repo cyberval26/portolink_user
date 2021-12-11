@@ -33,19 +33,19 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
       body: Container(
           alignment: Alignment.center,
           child:Column(
-              children: const [
-               //Image.asset("assets/images/abc.png", height: 400
-               // ),
-                Text("Portolink", style: TextStyle(
+              children:  [
+               Image.asset("assets/images/portolink.png", height: 400
+                ),
+               /* Text("Portolink", style: TextStyle(
                   fontSize: 24,
                   color: Colors.tealAccent,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.bold,
-                )),
+                )),*/
               ]
           )
       ),

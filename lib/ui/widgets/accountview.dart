@@ -29,7 +29,7 @@ class _AccountViewState extends State<AccountView> {
             shrinkWrap: true,
             padding: const EdgeInsets.all(20.0),
             children: [
-              Image.asset("assets/images/logo.png", height: 300
+              Image.asset("assets/images/portolink.png", height: 300
               ),
               ElevatedButton.icon(
                 icon: Icon(CupertinoIcons.pencil),

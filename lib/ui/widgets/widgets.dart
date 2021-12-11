@@ -9,3 +9,4 @@ import 'package:portolink_user/ui/pages/pages.dart';
 
 part 'templateview.dart';
 part 'accountview.dart';
+part 'pendingview.dart';

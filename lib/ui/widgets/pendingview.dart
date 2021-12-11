@@ -1,27 +1,27 @@
 part of 'widgets.dart';
 
 
-class TemplateView extends StatefulWidget {
-  static const String routeName = "/templateview";
-  final Template template;
-  TemplateView({this.template});
+class PendingView extends StatefulWidget {
+  static const String routeName = "/pendingview";
+  final Pending pending;
+  PendingView({this.pending});
 
 
   @override
-  _TemplateViewState createState() => _TemplateViewState();
+  _PendingViewState createState() => _PendingViewState();
 }
 
-class _TemplateViewState extends State<TemplateView> {
+class _PendingViewState extends State<PendingView> {
   bool isLoading = false;
   //CollectionReference assignmentCollection = FirebaseFirestore.instance.collection("assignment");
-  @override
 
+  @override
   Widget build(BuildContext context) {
-    Template template = widget.template;
-    if(template == null){
+    Pending pending = widget.pending;
+    if(pending == null){
       return Scaffold(
            appBar: AppBar(
-           title:Text('gagal EHE'+template.templateId),
+           title:Text('gagal EHE'+pending.pendingId),
            centerTitle : true,
            elevation : 0,
        ),
@@ -44,7 +44,7 @@ class _TemplateViewState extends State<TemplateView> {
                     //backgroundImage: NetworkImage(template.templateName),
                   ),
                   title: Text(
-                    template.templateName, style: TextStyle(
+                    pending.templateName, style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,),
                     maxLines: 1,
@@ -60,7 +60,7 @@ class _TemplateViewState extends State<TemplateView> {
                               ,color: Colors.black,
                           ),
                           onPressed: (){
-                            Navigator.push(
+                           /* Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => OrderTemplate(
@@ -69,7 +69,7 @@ class _TemplateViewState extends State<TemplateView> {
                                       description: template.description,
                                       price: template.price,
                                       photoFile :template.photoFile,
-                                    )));
+                                    )));*/
                           },
                         ),
                         /*IconButton(
@@ -207,7 +207,7 @@ class _TemplateViewState extends State<TemplateView> {
                             alignment:Alignment.center,
                             child: Column(
                               children: [
-                                Text(template.templateName, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),),
+                                Text(pending.status, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),),
                               ],
                             )
                         )
