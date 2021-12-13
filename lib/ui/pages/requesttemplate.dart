@@ -1,6 +1,6 @@
 part of 'pages.dart';
 
-class OrderTemplate extends StatefulWidget {
+class RequestTemplate extends StatefulWidget {
   static const String routeName = "/ordertemplate";
   final String templateId;
   final String templateName;
@@ -8,7 +8,7 @@ class OrderTemplate extends StatefulWidget {
   final String price;
   final String photoFile;
 
-  const OrderTemplate(
+  const RequestTemplate(
       {Key key,
         this.templateId,
         this.templateName,
@@ -18,13 +18,13 @@ class OrderTemplate extends StatefulWidget {
       })
       : super(key: key);
   @override
-  _OrderTemplateState createState() => _OrderTemplateState();
+  _RequestTemplateState createState() => _RequestTemplateState();
 }
 
-class _OrderTemplateState extends State<OrderTemplate> {
+class _RequestTemplateState extends State<RequestTemplate> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  final ctrlColor = TextEditingController();
+  final ctrlDesc = TextEditingController();
   final ctrlContact = TextEditingController();
   PickedFile imageFile;
   final ImagePicker  imagePicker = ImagePicker();
@@ -33,7 +33,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
     FilePickerResult result = await FilePicker.platform.pickFiles(allowMultiple: true);
 
     if(result != null) {
-    // List<File> files = result.paths.map((path) => File(path)).toList();
+      List<File> files = result.paths.map((path) => File(path)).toList();
     } else {
       // User canceled the picker
     }
@@ -97,13 +97,13 @@ class _OrderTemplateState extends State<OrderTemplate> {
   //mengurangi memori ketika mengetik
   @override
   void dispose(){
-    ctrlColor.dispose();
+    ctrlDesc.dispose();
     ctrlContact.dispose();
     super.dispose();
   }
 
   void clearForm(){
-    ctrlColor.clear();
+    ctrlDesc.clear();
     ctrlContact.clear();
     setState(() {
       imageFile = null;
@@ -114,7 +114,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Order Template"),
+        title: Text("Design Request"),
           leading: IconButton(icon:Icon(Icons.arrow_back),
             onPressed:() =>  Navigator.pushReplacementNamed(context, ListTemplate.routeName),
           )
@@ -125,6 +125,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
         height : double.infinity,
         child: Stack(
           children:[
+
             Container(
               child:ListView(
                   padding: EdgeInsets.all(16),
@@ -159,10 +160,10 @@ class _OrderTemplateState extends State<OrderTemplate> {
                           ),
                           SizedBox(height:24),
                           TextFormField(
-                            controller:  ctrlColor,
+                            controller:  ctrlDesc,
                             keyboardType:  TextInputType.name,
                             decoration: InputDecoration(
-                              labelText:"Color",
+                              labelText:"description",
                               prefixIcon: Icon(Icons.label),
                               //  border: OutlineInputBorder(),
                             ),
@@ -175,39 +176,55 @@ class _OrderTemplateState extends State<OrderTemplate> {
                               }
                             },
                           ),
-                          SizedBox(height:24),
-                          TextFormField(
-                            controller:  ctrlContact,
-                            keyboardType:  TextInputType.name,
-                            //maxLines: 3,
-                            decoration: InputDecoration(
-                              labelText:"Active contact",
-                              prefixIcon: Icon(Icons.class__outlined),
-                              //  border: OutlineInputBorder(),
-                            ),
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value){
-                              if(value.isEmpty){
-                                return"Please fill the field!";
-                              }else{
-                                return null;
-                              }
-                            },
+
+                         imageFile == null ?
+                          Column(
+                            children :[
+                              ElevatedButton.icon(
+                                onPressed: (){
+                                  showFileDialog(context);
+                                  // chooseFile();
+                                },
+                                icon: Icon(Icons.photo_camera),
+                                label:Text ("Ambil foto"),
+                                style: ElevatedButton.styleFrom(
+                                    onPrimary: Colors.white,
+                                    primary: Colors.deepPurple
+                                ),
+                              ),
+                              SizedBox(height:16),
+                              Text("file tidak ditemukan.")
+                            ],
+                          )
+                              :
+                         Column(
+                            children :[
+                              ElevatedButton.icon(
+                                onPressed: (){
+                                  showFileDialog(context);
+                                  // chooseFile();
+                                },
+                                icon: Icon(Icons.photo_camera),
+                                label:Text ("Ulang foto"),
+                                style: ElevatedButton.styleFrom(
+                                    onPrimary: Colors.white,
+                                    primary: Colors.deepPurple
+                                ),
+                              ),
+
+                              SizedBox(height:16),
+                              Semantics(
+                                child : Image.file(File(imageFile.path),
+                                  width:100,
+                                ),
+                              )
+                            ],
                           ),
+                          SizedBox(height:24),
                           SizedBox(height: 24),
                           GestureDetector(
                             onTap :(){
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => RequestTemplate(
-                                        templateId: widget.templateId,
-                                        templateName: widget.templateName,
-                                        description: widget.description,
-                                        price: widget.price,
-                                        photoFile :widget.photoFile,
-                                      )));
-                             // Navigator.pushReplacementNamed(context, Register.routeName);
+                              Navigator.pushReplacementNamed(context, Register.routeName);
                             },
                             child :const Text("memiliki request sendiri",
                               style : TextStyle(color: Colors.tealAccent,
@@ -223,9 +240,9 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                   setState(() {
                                     isLoading = true;
                                   });
-                                  Order order = Order("",widget.templateName,ctrlColor.text,
-                                      ctrlContact.text,"","","");
-                                  await OrderServices.addOrder(order, imageFile).then((value){
+                                  Order order = Order("",widget.templateName,ctrlDesc.text,
+                                      "","","","");
+                                  await OrderServices.addRequest(order, imageFile).then((value){
                                     if(value == true){
                                       Fluttertoast.showToast(msg: "Add order succesfully !",
                                           backgroundColor: Colors.green);
