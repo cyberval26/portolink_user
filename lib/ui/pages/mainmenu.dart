@@ -8,28 +8,28 @@ class MainMenu extends StatefulWidget {
 
 class _MainMenuState extends State<MainMenu> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions =  <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     ListTemplate(),
     PendingRequest(),
   ];
 
-  void _onItemTapped(int index){
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
   @override
-  void InitState(){
+  void InitState() {
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body:  Center(
+      body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
-    ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -37,14 +37,14 @@ class _MainMenuState extends State<MainMenu> {
             icon: Icon(Icons.event_note_rounded),
             label: "List template",
           ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.note_add_rounded),
-              label: "Pending Request",
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.note_add_rounded),
+            label: "Pending Request",
+          ),
         ],
         currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-      ) ,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }

@@ -1,7 +1,5 @@
-
 import 'dart:async';
 import 'dart:io';
-
 
 //import 'package:email_validator/email_validator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,6 +21,7 @@ part 'listtemplate.dart';
 part 'dashboard.dart';
 part 'myaccount.dart';
 part 'mainmenu.dart';
-part'pendingrequest.dart';
+part 'pendingrequest.dart';
 part 'ordertemplate.dart';
 part 'requesttemplate.dart';
+part 'updateaccount.dart';
