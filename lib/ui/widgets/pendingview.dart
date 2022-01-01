@@ -19,13 +19,7 @@ class _PendingViewState extends State<PendingView> {
   Widget build(BuildContext context) {
     Pending pending = widget.pending;
     if(pending == null){
-      return Scaffold(
-           appBar: AppBar(
-           title:Text('gagal EHE'+pending.pendingId),
-           centerTitle : true,
-           elevation : 0,
-       ),
-      );
+      return Container();
     }else {
       return Card(
         elevation: 1,

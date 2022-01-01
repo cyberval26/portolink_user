@@ -5,16 +5,20 @@ class Pending extends Equatable{
   final String pendingId;
   final String templateName;
   final String link;
+  final String color;
   final String description;
   final String status;
+  final String addBy;
 
 
   const Pending(
       this.pendingId,
       this.templateName,
       this.link,
+      this.color,
       this.description,
       this.status,
+      this.addBy,
       );
 
   @override
@@ -23,7 +27,9 @@ class Pending extends Equatable{
     pendingId,
     templateName,
     link,
+    color,
     description,
     status,
+    addBy,
   ];
 }

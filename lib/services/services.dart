@@ -19,4 +19,5 @@ import 'package:portolink_user/models/models.dart';
 part 'auth_services.dart';
 part 'activity_services.dart';
 part 'order_services.dart';
+part'pending_services.dart';
 

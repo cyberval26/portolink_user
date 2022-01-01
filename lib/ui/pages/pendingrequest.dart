@@ -8,6 +8,7 @@ class PendingRequest extends StatefulWidget {
 }
 
 class _PendingRequestState extends State<PendingRequest> {
+  static FirebaseAuth auth = FirebaseAuth.instance;
   CollectionReference pendingCollection = FirebaseFirestore.instance.collection("pending");
 
   Widget buildBody(){
@@ -28,20 +29,21 @@ class _PendingRequestState extends State<PendingRequest> {
               children : snapshot.data.docs.map((DocumentSnapshot doc){
                 //  Map<String, dynamic> doc = docs as Map<String, dynamic>;
                 Pending pending;
-               // if (doc['pendingId'] != null) {
-                  ActivityServices.showToast("gagal ehe"+doc['pendingId'], Colors.green);
+                if (doc['addBy'] == FirebaseAuth.instance.currentUser.uid) {
+                 // ActivityServices.showToast("gagal ehe"+doc['pendingId'], Colors.green);
                   pending = Pending(
                     doc['pendingId'],
                     doc['templateName'],
                     doc['link'],
+                    doc['color'],
                     doc['description'],
                     doc['status'],
+                    doc['addBy']
                 );
-                // }else{
-                //  ActivityServices.showToast("gagal ehe"+doc['templatename'], Colors.red);
-                //   pending = null;
-                // }
-
+                }else{
+                  ActivityServices.showToast("gagal ehe"+doc['templateName'], Colors.red);
+                  pending = null;
+                 }
                 return PendingView(pending:pending);
               }).toList(),
             );

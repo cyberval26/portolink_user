@@ -193,7 +193,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                 ),
                               ),
                               SizedBox(height:16),
-                              Text("file tidak ditemukan.")
+                              Text("file tidak ditemukan."),
                             ],
                           )
                               :
@@ -242,9 +242,26 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                   });
                                   Order order = Order("",widget.templateName,ctrlDesc.text,
                                       "","","","");
+                                  Pending pending = Pending("",widget.templateName,"",
+                                      "",ctrlDesc.text,"","");
+
                                   await OrderServices.addRequest(order, imageFile).then((value){
                                     if(value == true){
                                       Fluttertoast.showToast(msg: "Add order succesfully !",
+                                          backgroundColor: Colors.green);
+                                      clearForm();
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                     // Navigator.pushReplacementNamed(context, Dashboard.routeName);
+                                    }else{
+                                      ActivityServices.showToast("Add Order failed", Colors.red);
+                                    }
+                                  });
+
+                                  await PendingServices.addPending(pending, imageFile).then((value){
+                                    if(value == true){
+                                      Fluttertoast.showToast(msg: "You can check your order in pending list !",
                                           backgroundColor: Colors.green);
                                       clearForm();
                                       setState(() {
@@ -255,6 +272,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                       ActivityServices.showToast("Add Order failed", Colors.red);
                                     }
                                   });
+
                                 }else{
                                   ActivityServices.showToast("Please check form fields !", Colors.red);
                                   // bisa dikosongkan saja

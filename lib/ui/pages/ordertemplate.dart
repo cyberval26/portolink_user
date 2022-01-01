@@ -134,6 +134,11 @@ class _OrderTemplateState extends State<OrderTemplate> {
                       child:  Column(
                         children: [
                           SizedBox(height:15),
+                          Image.network(
+                            widget.photoFile,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -154,7 +159,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.phone, color: Colors.black54,),
-                              Text("  "+widget.price, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text("  "+ActivityServices.toIDR(widget.price), textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
                             ],
                           ),
                           SizedBox(height:24),
@@ -225,9 +230,26 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                   });
                                   Order order = Order("",widget.templateName,ctrlColor.text,
                                       ctrlContact.text,"","","");
+                                  Pending pending = Pending("",widget.templateName,"",
+                                      ctrlColor.text,"","","");
+
                                   await OrderServices.addOrder(order, imageFile).then((value){
                                     if(value == true){
                                       Fluttertoast.showToast(msg: "Add order succesfully !",
+                                          backgroundColor: Colors.green);
+                                      clearForm();
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                     // Navigator.pushReplacementNamed(context, Dashboard.routeName);
+                                    }else{
+                                      ActivityServices.showToast("Add Order failed", Colors.red);
+                                    }
+                                  });
+
+                                  await PendingServices.addPending(pending, imageFile).then((value){
+                                    if(value == true){
+                                      Fluttertoast.showToast(msg: "You can check your order in pending list !",
                                           backgroundColor: Colors.green);
                                       clearForm();
                                       setState(() {

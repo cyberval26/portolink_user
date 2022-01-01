@@ -22,6 +22,7 @@ class OrderServices{
          'contact' : order.contact,
          'requestDescription' : order.requestDescription,
          'photoReference' : order.photoReference,
+         'addBy':auth.currentUser.uid,
          'createdAt' : dateNow,
       });
       if(orderDocument != null){
@@ -44,6 +45,7 @@ class OrderServices{
       }
    }
 
+
    static Future<bool> addRequest(Order order, PickedFile imgFile) async{
       String dateNow = ActivityServices.dateNow();
       await Firebase.initializeApp();
@@ -54,6 +56,7 @@ class OrderServices{
          'contact' : order.contact,
          'requestDescription' : order.requestDescription,
          'photoReference' : order.photoReference,
+         'addBy': auth.currentUser.uid,
          'createdAt' : dateNow,
       });
       if(orderDocument != null){

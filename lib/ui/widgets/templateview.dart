@@ -27,7 +27,47 @@ class _TemplateViewState extends State<TemplateView> {
        ),
       );
     }else {
-      return Card(
+      return Container(
+        padding: EdgeInsets.all(15),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => OrderTemplate(
+                      templateId: template.templateId,
+                      templateName: template.templateName,
+                      description: template.description,
+                      price: template.price,
+                      photoFile :template.photoFile,
+                    )));
+          },
+          child: Stack(
+            children: [
+              Image.network(
+                template.photoFile,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 250,
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                color: Colors.black.withOpacity(0.7),
+                child: Text(
+                  template.templateName,
+                  style: GoogleFonts.roboto(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w200,
+                      )),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+      /*return Card(
         elevation: 1,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.0)
@@ -219,7 +259,7 @@ class _TemplateViewState extends State<TemplateView> {
             )
 
         ),
-      );
+      );*/
     }
 
   }
