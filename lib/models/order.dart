@@ -1,7 +1,6 @@
 part of 'models.dart';
 
-
-class Order extends Equatable{
+class Order {
   final String orderId;
   final String templateName;
   final String color;
@@ -9,19 +8,15 @@ class Order extends Equatable{
   final String requestDescription;
   final String photoReference;
   final String createdAt;
-
   const Order(
-      this.orderId,
-      this.templateName,
-      this.color,
-      this.contact,
-      this.requestDescription,
-      this.photoReference,
-      this.createdAt,
-      );
-
-  @override
-  // TODO: implement props
+    this.orderId,
+    this.templateName,
+    this.color,
+    this.contact,
+    this.requestDescription,
+    this.photoReference,
+    this.createdAt
+  );
   List<Object> get props => [
     orderId,
     templateName,
@@ -29,6 +24,6 @@ class Order extends Equatable{
     contact,
     requestDescription,
     photoReference,
-    createdAt,
+    createdAt
   ];
 }

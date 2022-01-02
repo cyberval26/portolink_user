@@ -1,7 +1,6 @@
 part of 'models.dart';
 
-
-class Pending extends Equatable{
+class Pending {
   final String pendingId;
   final String templateName;
   final String link;
@@ -9,20 +8,15 @@ class Pending extends Equatable{
   final String description;
   final String status;
   final String addBy;
-
-
   const Pending(
-      this.pendingId,
-      this.templateName,
-      this.link,
-      this.color,
-      this.description,
-      this.status,
-      this.addBy,
-      );
-
-  @override
-  // TODO: implement props
+    this.pendingId,
+    this.templateName,
+    this.link,
+    this.color,
+    this.description,
+    this.status,
+    this.addBy
+  );
   List<Object> get props => [
     pendingId,
     templateName,
@@ -30,6 +24,6 @@ class Pending extends Equatable{
     color,
     description,
     status,
-    addBy,
+    addBy
   ];
 }
