@@ -25,3 +25,5 @@ part 'pendingrequest.dart';
 part 'ordertemplate.dart';
 part 'requesttemplate.dart';
 part 'updateaccount.dart';
+part'ourcontact.dart';
+part'checkrole.dart';

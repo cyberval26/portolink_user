@@ -107,5 +107,21 @@ class AuthServices{
     return hsl;
   }
 
+  static Future<bool> notUser(String id) async {
+    bool hsl = true;
+    await Firebase.initializeApp();
+    await userCollection.doc(id).update({
+      'isOn': '0',
+
+    }).then((value) {
+      hsl = true;
+    }).catchError((onError){
+      hsl = false;
+    });
+
+    return hsl;
+  }
+
+
 
 }

@@ -66,7 +66,7 @@ class _PendingViewState extends State<PendingView> {
                                     )));*/
                           },
                         ),
-                        /*IconButton(
+                        IconButton(
                           icon: Icon(Icons.more_horiz_rounded,
                             color: Colors.blue,),
                           onPressed: () {
@@ -88,32 +88,10 @@ class _PendingViewState extends State<PendingView> {
                                               children: [
                                                 Column(
                                                   children: [
-                                                    ClipRRect(
-                                                      borderRadius: BorderRadius.circular(20),
-                                                      child: Image(
-                                                        height: 300,
-                                                        image:NetworkImage(template.photoFile),
-                                                      ),
-                                                    ),
-                                                    SizedBox(height:24,),
                                                     Row(
                                                       children: [
                                                         Icon(CupertinoIcons.news_solid),
-                                                        Text("    "+template.templateName, textAlign:TextAlign.center,),
-                                                      ],
-                                                    ),
-                                                    SizedBox(height:24),
-                                                    Row(
-                                                      children: [
-                                                        Icon(Icons.description),
-                                                        Text("    "+template.description),
-                                                      ],
-                                                    ),
-                                                    SizedBox(height:24),
-                                                    Row(
-                                                      children: [
-                                                        Icon(Icons.lock_clock),
-                                                        Text("    "+template.price),
+                                                        Text("    "+pending.templateName, textAlign:TextAlign.center,),
                                                       ],
                                                     ),
                                                     SizedBox(height:24),
@@ -126,7 +104,7 @@ class _PendingViewState extends State<PendingView> {
                                                                  children: [
                                                                    Text("Description :",textAlign: TextAlign.left ,style: TextStyle(fontWeight: FontWeight.bold),),
                                                                    SizedBox(height :10),
-                                                                   Text(template.description),
+                                                                   Text(pending.status),
                                                                  ],
                                                                )
                                                             )
@@ -149,24 +127,15 @@ class _PendingViewState extends State<PendingView> {
                                                 ElevatedButton.icon(
                                                   icon: const Icon(CupertinoIcons
                                                       .pin_fill),
-                                                  label: Text("Pins data"),
+                                                  label: Text("delete"),
                                                   onPressed: ()async {
-                                                     /* setState(() {
-                                                        isLoading = true;
-                                                      });
-                                                      Pins pins = Pins("",assignment.assignName,assignment.assignCourse,
-                                                          assignment.assignDeadline,assignment.assignDesc,assignment.assignImage,"",FirebaseAuth.instance.currentUser.uid,"","");
-                                                      await PinsServices.addPins(pins).then((value){
-                                                        if(value == true){
-                                                          ActivityServices.showToast("pins data succes", Colors.green);
-                                                          setState(() {
-                                                            isLoading = false;
-                                                          });
-                                                        }else{
-                                                          ActivityServices.showToast("pins data failed", Colors.red);
+                                                        bool hsl = await PendingServices.deletePending(pending.pendingId);
+                                                        if (hsl) {
+                                                            ActivityServices.showToast("delete succesfully",Colors.red);
+                                                        } else {
+                                                           ActivityServices.showToast("delete succesfully",Colors.red);
                                                         }
-                                                      });*/
-                                                  },
+                                                    },
                                                   style: ElevatedButton.styleFrom(
                                                       onPrimary: Colors.white,
                                                       primary: Colors.deepPurple
@@ -181,7 +150,7 @@ class _PendingViewState extends State<PendingView> {
                                 }
                             );
                           },
-                        ),*/
+                        ),
                       ]
                   ),
                 ),

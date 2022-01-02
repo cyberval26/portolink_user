@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
                                       isLoading = false;
                                     });
                                     ActivityServices.showToast("Login Success", Colors.green);
-                                    Navigator.pushReplacementNamed(context, Dashboard.routeName);
+                                    Navigator.pushReplacementNamed(context, MainMenu.routeName);
                                   }else{
                                     setState(() {
                                       isLoading =false;

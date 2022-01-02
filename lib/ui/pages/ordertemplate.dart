@@ -116,7 +116,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
       appBar: AppBar(
         title: Text("Order Template"),
           leading: IconButton(icon:Icon(Icons.arrow_back),
-            onPressed:() =>  Navigator.pushReplacementNamed(context, ListTemplate.routeName),
+            onPressed:() =>  Navigator.pushReplacementNamed(context, MainMenu.routeName),
           )
       ),
       resizeToAvoidBottomInset: false ,
@@ -233,7 +233,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                   Pending pending = Pending("",widget.templateName,"",
                                       ctrlColor.text,"","","");
 
-                                  await OrderServices.addOrder(order, imageFile).then((value){
+                                  await OrderServices.addOrder(order,pending, imageFile).then((value){
                                     if(value == true){
                                       Fluttertoast.showToast(msg: "Add order succesfully !",
                                           backgroundColor: Colors.green);
@@ -247,7 +247,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                     }
                                   });
 
-                                  await PendingServices.addPending(pending, imageFile).then((value){
+                                  /*await PendingServices.addPending(pending, imageFile).then((value){
                                     if(value == true){
                                       Fluttertoast.showToast(msg: "You can check your order in pending list !",
                                           backgroundColor: Colors.green);
@@ -259,7 +259,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                     }else{
                                       ActivityServices.showToast("Add Order failed", Colors.red);
                                     }
-                                  });
+                                  });*/
                                 }else{
                                   ActivityServices.showToast("Please check form fields !", Colors.red);
                                   // bisa dikosongkan saja

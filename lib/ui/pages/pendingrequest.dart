@@ -55,13 +55,6 @@ class _PendingRequestState extends State<PendingRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text("Pending Request"),
-          leading: IconButton(icon:Icon(Icons.arrow_back),
-            onPressed:() =>  Navigator.pushReplacementNamed(context, Dashboard.routeName),
-          )
-        // centerTitle: true,
-      ),
       resizeToAvoidBottomInset: false,
       body: buildBody(),
     );

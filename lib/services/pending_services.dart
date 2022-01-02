@@ -42,6 +42,21 @@ class PendingServices{
     }else{
       return false;
     }
+
+
+  }
+
+  static Future<bool> deletePending(String id) async {
+    bool hsl = true;
+    bool hsp = true;
+    await Firebase.initializeApp();
+    await pendingCollection.doc(id).delete().then((value) {
+      hsl = true;
+    }).catchError((onError){
+      hsl = false;
+    });
+
+    return hsl;
   }
 
 }
