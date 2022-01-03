@@ -21,7 +21,7 @@ class _TemplateViewState extends State<TemplateView> {
     if(template == null){
       return Scaffold(
            appBar: AppBar(
-           title:Text('gagal EHE'+template.templateId),
+           title:Text('gagal EHE'+template.tid),
            centerTitle : true,
            elevation : 0,
        ),
@@ -35,17 +35,17 @@ class _TemplateViewState extends State<TemplateView> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => OrderTemplate(
-                      templateId: template.templateId,
-                      templateName: template.templateName,
-                      description: template.description,
+                      templateId: template.tid,
+                      templateName: template.name,
+                      description: template.desc,
                       price: template.price,
-                      photoFile :template.photoFile,
+                      photoFile :template.photo,
                     )));
           },
           child: Stack(
             children: [
               Image.network(
-                template.photoFile,
+                template.photo,
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 250,
@@ -54,7 +54,7 @@ class _TemplateViewState extends State<TemplateView> {
                 padding: EdgeInsets.all(5),
                 color: Colors.black.withOpacity(0.7),
                 child: Text(
-                  template.templateName,
+                  template.name,
                   style: GoogleFonts.roboto(
                       textStyle: TextStyle(
                         color: Colors.white,

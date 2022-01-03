@@ -1,11 +1,9 @@
 part of'services.dart';
 
 class PendingServices{
-  //setup cloud firestore
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference pendingCollection = FirebaseFirestore.instance.collection("pending");
+  static CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pending");
   static DocumentReference pendingDocument;
-  //setup storage
   static Reference ref;
   static UploadTask uploadTask;
   static String imgUrl;
@@ -21,12 +19,6 @@ class PendingServices{
       'addBy':auth.currentUser.uid
     });
     if (pendingDocument != null) {
-      /* ref = FirebaseStorage.instance.ref().child("images").child(orderDocument.id+"jpg");
-         uploadTask = ref.putFile(File(imgFile.path));
-
-         await uploadTask.whenComplete(()=>
-            ref.getDownloadURL().then((value) => imgUrl = value,)
-         );*/
       pendingCollection.doc(pendingDocument.id).update({
         'pendingId' : pendingDocument.id
       });

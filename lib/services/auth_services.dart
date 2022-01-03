@@ -2,7 +2,7 @@ part of 'services.dart';
 
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference userCollection = FirebaseFirestore.instance.collection("users");
+  static CollectionReference userCollection = FirebaseFirestore.instance.collection("Users");
   static DocumentReference userDoc;
   static Future<String> signUp(Users users) async {
     await Firebase.initializeApp();
@@ -12,8 +12,6 @@ class AuthServices {
     String uid = "";
     UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: users.email, password: users.password);
     uid = userCredential.user.uid;
-    //sebuah fungsi pasti asycronous jadi perlu await
-    // token = await userCredential.user.getIdToken();
     token = await FirebaseMessaging.instance.getToken();
     await userCollection.doc(uid).set({
       'uid': uid,
@@ -39,8 +37,6 @@ class AuthServices {
     String uid = "";
     UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
     uid = userCredential.user.uid;
-    //sebuah fungsi pasti asycronous jadi perlu await
-    // token = await userCredential.user.getIdToken();
     token = await FirebaseMessaging.instance.getToken();
     await userCollection.doc(uid).update({
       'isOn': '1',
