@@ -1,40 +1,34 @@
 part of 'pages.dart';
 
 class MainMenu extends StatefulWidget {
+  const MainMenu({Key key}) : super(key: key);
   static const String routeName = "/mainmenu";
   @override
   _MainMenuState createState() => _MainMenuState();
 }
-
 class _MainMenuState extends State<MainMenu> {
-
-  //Users users;
   bool isLoading = false;
-
-  int _selectedIndex = 0;
+  int _selectedIntex = 0;
   static List<Widget> _widgetOptions = <Widget>[
-    ListTemplate(),
-    PendingRequest(),
-    OurCountact(),
-    MyAccount(),
+     ListTemplate(),
+     PendingRequest(),
+     OurCountact(),
+     MyAccount()
   ];
-
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _selectedIntex = index;
     });
   }
-
   @override
   void InitState() {
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
       return Scaffold(
         body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
+          child: _widgetOptions.elementAt(_selectedIntex),
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -56,7 +50,7 @@ class _MainMenuState extends State<MainMenu> {
               label: "Account",
             ),
           ],
-          currentIndex: _selectedIndex,
+          currentIndex: _selectedIntex,
           onTap: _onItemTapped,
         ),
       );
