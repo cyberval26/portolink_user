@@ -35,11 +35,11 @@ class _TemplateViewState extends State<TemplateView> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => OrderTemplate(
-                      templateId: template.tid,
-                      templateName: template.name,
-                      description: template.desc,
+                      tid: template.tid,
+                      name: template.name,
+                      desc: template.desc,
                       price: template.price,
-                      photoFile :template.photo,
+                      photo :template.photo,
                     )));
           },
           child: Stack(

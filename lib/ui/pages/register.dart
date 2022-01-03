@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
 class Register extends StatefulWidget {
+  const Register({Key key}) : super(key: key);
   static const String routeName = "/register";
   @override
   _RegisterState createState() => _RegisterState();
 }
-
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   final ctrlName = TextEditingController();
@@ -14,98 +14,62 @@ class _RegisterState extends State<Register> {
   final ctrlPassword = TextEditingController();
   bool isVisible = true;
   bool isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     /* appBar: AppBar(
-        title:Text('Register'),
-        centerTitle : true,
-        elevation : 0,
-      ),*/
       resizeToAvoidBottomInset:  false,
-      body:  Container(
-          width: double.infinity,
-          height: double.infinity,
-          padding:  EdgeInsets.all(24),
-          child: Stack(
-            children: [
-              ListView(
+      body:  SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Stack(
+          children: [
+            Align(
+              alignment: const AlignmentDirectional(0, -0.8),
+              child: Image.asset(
+                'assets/images/portolink.png',
+                width: 250,
+                height: 250,
+                fit: BoxFit.fill
+              )
+            ),
+            Container(
+              padding: const EdgeInsets.all(32),
+              child: ListView(
                 children: [
                   Form(
-                    key:_formKey,
+                    key: _formKey,
                     child: Column(
                       children: [
-                        Image.asset("assets/images/portolink.png", height: 300),
+                        const SizedBox(height: 300),
                         TextFormField(
-                          controller:  ctrlName,
-                          keyboardType:  TextInputType.name,
+                          controller: ctrlEmail,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
-                            labelText:"Name",
-                            prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(),
-                          ),
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value){
-                            if(value.isEmpty){
-                              return"Please fill the field!";
-                            }else{
-                              return null;
-                            }
-                          },
-                        ),
-                        SizedBox(height :24),
-                        TextFormField(
-                          controller:  ctrlPhone,
-                          keyboardType:  TextInputType.phone,
-                          decoration: const InputDecoration(
-                            labelText:"Phone",
-                            prefixIcon: Icon(Icons.phone),
-                            border: OutlineInputBorder(),
-                          ),
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value){
-                            if(value.isEmpty){
-                              return"Please fill the field!";
-                            }else{
-                              if (value.length < 7 || value.length > 14){
-                                return "Phone number is not valid !";
-                              }else{
-                                return null ;
-                              }
-                            }
-                          },
-                        ),
-                        SizedBox(height :24),
-                        TextFormField(
-                          controller:  ctrlEmail,
-                          keyboardType:  TextInputType.emailAddress,
-                          decoration: const InputDecoration(
-                            labelText:"Email",
+                            labelText: "Email",
                             prefixIcon: Icon(Icons.mail_outline_rounded),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value){
-                            if(value.isEmpty){
-                              return"Please fill the field!";
-                            }else{
-                              if(!EmailValidator.validate(value)){
-                                return "Email is not valid !";
-                              }else{
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Please fill the field";
+                            } else {
+                              if (!EmailValidator.validate(value)) {
+                                return "Email isn't valid!";
+                              } else {
                                 return null;
                               }
                             }
-                          },
+                          }
                         ),
-                        SizedBox(height:24),
+                        const SizedBox(height: 24),
                         TextFormField(
-                          controller:  ctrlPassword,
+                          controller: ctrlPassword,
                           obscureText: isVisible,
                           decoration: InputDecoration(
-                            labelText:"Password",
-                            prefixIcon: Icon(Icons.vpn_key),
-                            border: OutlineInputBorder(),
+                            labelText: "Password",
+                            prefixIcon: const Icon(Icons.vpn_key),
+                            border: const OutlineInputBorder(),
                             suffixIcon: GestureDetector(
                               onTap: () {
                                 setState(() {
@@ -113,80 +77,86 @@ class _RegisterState extends State<Register> {
                                 });
                               },
                               child: Icon(
-                                  isVisible ?
-                                  Icons.visibility :
-                                  Icons.visibility_off
-                              ),
-                            ),
+                                isVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off
+                              )
+                            )
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value){
-                            return value.length < 6 ?
-                            "Password must have at least 6 characters !"
-                                : null ;
-                          },
+                          validator: (value) {
+                            return value.length < 6
+                            ? "Password must have at least 6 character!"
+                            : null;
+                          }
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         ElevatedButton.icon(
-                            onPressed: () async {
-                              if(_formKey.currentState.validate()){
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              Users users = Users(
+                                "", ctrlName.text, ctrlPhone.text, ctrlEmail.text, ctrlPassword.text, "", ""
+                              );
+                              String msg = await AuthServices.signUp(users);
+                              if (msg == "Success") {
                                 setState(() {
-                                  isLoading = true;
+                                  isLoading = false;
                                 });
-                                Users users = Users("", ctrlName.text, ctrlPhone.text, ctrlEmail.text, ctrlPassword.text, "", "");
-                                await AuthServices.signUp(users).then((value){
-                                  if(value == "success"){
-                                    setState(() {
-                                      isLoading = false;
-                                    });
-                                    ActivityServices.showToast("register success", Colors.green);
-                                    Navigator.pushReplacementNamed(context, Login.routeName);
-                                  } else {
-                                    setState(() {
-                                      isLoading = false;
-                                    });
-                                    ActivityServices.showToast(value, Colors.red);
-                                  }
+                                ActivityServices.showToastWhite("Register Success");
+                                Navigator.pushReplacementNamed(
+                                  context, Login.routeName
+                                );
+                              } else {
+                                setState(() {
+                                  isLoading = false;
                                 });
-
-                                //melanjutkan ketahap berikutnya
-                                //replacement name di replace , pushedname ditumpuk ada tombol back
-                                //Navigator.pushNamed(context, MainMenu.routeName);
-                              }else{
-                                // bisa dikosongkan saja
-                                Fluttertoast.showToast(msg: "Please check the fields !",backgroundColor: Colors.red);
+                                ActivityServices.showToastBlack(msg);
                               }
-                            },
-                            icon : Icon(Icons.login_rounded),
-                            label: Text("Register"),
-                            style : ElevatedButton.styleFrom(
-                              primary : Colors.teal[200],
-                              onPrimary: Colors.white,
-                              elevation: 4,
-                              // primary : Colors.deepOrange[400],
-                            )
-                        ),
-                        SizedBox(height: 24),
-                        GestureDetector(
-                          onTap :(){
-                            Navigator.pushReplacementNamed(context, Login.routeName);
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: "Please check the fields!",
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white
+                              );
+                            }
                           },
-                          child :const Text("Already registered? Login",
-                            style : TextStyle(color: Colors.tealAccent,
-                                fontSize : 16
-                            ),
-                          ),
-                        )],
-                    ),
+                          icon: const Icon(Icons.save),
+                          label: const Text("Register"),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            elevation: 4
+                          )
+                        ),
+                        const SizedBox(height: 24),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                              context, Login.routeName
+                            );
+                          },
+                          child: const Text(
+                            "Already registered? Login.",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 16
+                            )
+                          )
+                        )
+                      ]
+                    )
                   )
-                ],
-              ),
-              /*isLoading == true
-                  ? ActivityServices.loadings()
-                  : Container()*/
-            ],
-          )
-      ),
+                ]
+              )
+            ),
+            isLoading == true
+            ? ActivityServices.loadings()
+            : Container()
+          ]
+        )
+      )
     );
   }
 }

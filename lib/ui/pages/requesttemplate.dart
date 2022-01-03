@@ -2,19 +2,19 @@ part of 'pages.dart';
 
 class RequestTemplate extends StatefulWidget {
   static const String routeName = "/ordertemplate";
-  final String templateId;
-  final String templateName;
-  final String description;
+  final String tid;
+  final String name;
+  final String desc;
   final String price;
-  final String photoFile;
+  final String photo;
 
   const RequestTemplate(
       {Key key,
-        this.templateId,
-        this.templateName,
-        this.description,
+        this.tid,
+        this.name,
+        this.desc,
         this.price,
-        this.photoFile,
+        this.photo,
       })
       : super(key: key);
   @override
@@ -139,7 +139,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.person, color: Colors.black54,),
-                              Text(" "+widget.templateName, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text(" "+widget.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
                             ],
                           ),
                           SizedBox(height:15),
@@ -147,7 +147,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.email, color: Colors.black54,),
-                              Text("  "+widget.description, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text("  "+widget.desc, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
                             ],
                           ),
                           SizedBox(height:15),
@@ -240,9 +240,9 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                   setState(() {
                                     isLoading = true;
                                   });
-                                  Order order = Order("",widget.templateName,ctrlDesc.text,
+                                  Order order = Order("",widget.name,ctrlDesc.text,
                                       "","","","");
-                                  Pending pending = Pending("",widget.templateName,"",
+                                  Pending pending = Pending("",widget.name,"",
                                       "",ctrlDesc.text,"","");
 
                                   await OrderServices.addRequest(order, imageFile).then((value){

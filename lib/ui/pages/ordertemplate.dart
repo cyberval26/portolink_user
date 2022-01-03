@@ -2,19 +2,19 @@ part of 'pages.dart';
 
 class OrderTemplate extends StatefulWidget {
   static const String routeName = "/ordertemplate";
-  final String templateId;
-  final String templateName;
-  final String description;
+  final String tid;
+  final String name;
+  final String desc;
   final String price;
-  final String photoFile;
+  final String photo;
 
   const OrderTemplate(
       {Key key,
-        this.templateId,
-        this.templateName,
-        this.description,
+        this.tid,
+        this.name,
+        this.desc,
         this.price,
-        this.photoFile,
+        this.photo,
       })
       : super(key: key);
   @override
@@ -135,7 +135,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                         children: [
                           SizedBox(height:15),
                           Image.network(
-                            widget.photoFile,
+                            widget.photo,
                             fit: BoxFit.cover,
                             width: double.infinity,
                           ),
@@ -143,7 +143,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.person, color: Colors.black54,),
-                              Text(" "+widget.templateName, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text(" "+widget.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
                             ],
                           ),
                           SizedBox(height:15),
@@ -151,7 +151,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.email, color: Colors.black54,),
-                              Text("  "+widget.description, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text("  "+widget.desc, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
                             ],
                           ),
                           SizedBox(height:15),
@@ -206,11 +206,11 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => RequestTemplate(
-                                        templateId: widget.templateId,
-                                        templateName: widget.templateName,
-                                        description: widget.description,
+                                        tid: widget.tid,
+                                        name: widget.name,
+                                        desc: widget.desc,
                                         price: widget.price,
-                                        photoFile :widget.photoFile,
+                                        photo :widget.photo,
                                       )));
                              // Navigator.pushReplacementNamed(context, Register.routeName);
                             },
@@ -228,9 +228,9 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                   setState(() {
                                     isLoading = true;
                                   });
-                                  Order order = Order("",widget.templateName,ctrlColor.text,
+                                  Order order = Order("",widget.name,ctrlColor.text,
                                       ctrlContact.text,"","","");
-                                  Pending pending = Pending("",widget.templateName,"",
+                                  Pending pending = Pending("",widget.name,"",
                                       ctrlColor.text,"","","");
 
                                   await OrderServices.addOrder(order,pending, imageFile).then((value){

@@ -9,7 +9,7 @@ class PendingRequest extends StatefulWidget {
 
 class _PendingRequestState extends State<PendingRequest> {
   static FirebaseAuth auth = FirebaseAuth.instance;
-  CollectionReference pendingCollection = FirebaseFirestore.instance.collection("pending");
+  CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pending");
 
   Widget buildBody(){
     return Container(

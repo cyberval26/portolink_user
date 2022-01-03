@@ -8,7 +8,7 @@ class MyAccount extends StatefulWidget {
 }
 
 class _MyAccountState extends State<MyAccount> {
-  CollectionReference userCollection = FirebaseFirestore.instance.collection("users");
+  CollectionReference userCollection = FirebaseFirestore.instance.collection("Users");
   //Users users;
   bool isLoading = false;
 

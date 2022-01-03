@@ -10,7 +10,7 @@ class ListTemplate extends StatefulWidget {
 }
 
 class _ListTemplateState extends State<ListTemplate> {
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("template");
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Templates");
 
   Widget buildBody(){
     return Container(
@@ -32,11 +32,11 @@ class _ListTemplateState extends State<ListTemplate> {
                 Template template;
                // if (doc['templateId'] == null) {
                   template = Template(
-                    doc['templateId'],
-                    doc['templateName'],
-                    doc['description'],
+                    doc['tid'],
+                    doc['name'],
+                    doc['desc'],
                     doc['price'],
-                    doc['photoFile'],
+                    doc['photo'],
                   );
                // }else{
                //   template = null;
