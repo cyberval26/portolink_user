@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:portolink_user/shared/shared.dart';
 import 'package:portolink_user/ui/pages/pages.dart';
 import 'package:portolink_user/ui/widgets/widgets.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Portolink',
+      theme: MyTheme.lightTheme(),
       initialRoute: '/splash',
       routes: {
         Splash.routeName: (context) => const Splash(),
@@ -33,7 +34,6 @@ class MyApp extends StatelessWidget {
         Register.routeName: (context) => const  Register(),
         TemplateView.routeName: (context) => TemplateView(),
         Dashboard.routeName: (context) => Dashboard(),
-        AccountView.routeName: (context) => AccountView(),
         MyAccount.routeName: (context) => MyAccount(),
         OrderTemplate.routeName: (context) => const OrderTemplate(),
         ListTemplate.routeName: (context) => ListTemplate(),
