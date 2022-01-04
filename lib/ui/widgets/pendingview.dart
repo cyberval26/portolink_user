@@ -86,14 +86,14 @@ class _PendingViewState extends State<PendingView> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ElevatedButton.icon(
-                                        icon: const Icon(CupertinoIcons.pin_fill),
-                                        label: const Text("delete"),
+                                        icon: const Icon(CupertinoIcons.trash),
+                                        label: const Text("Delete"),
                                         onPressed: ()async {
                                           bool hsl = await PendingServices.deletePending(pending.pendingId);
                                           if (hsl) {
-                                            ActivityServices.showToast("delete succesfully",Colors.red);
+                                            ActivityServices.showToast("Delete Success", Colors.grey);
                                           } else {
-                                            ActivityServices.showToast("delete succesfully",Colors.red);
+                                            ActivityServices.showToast("Delete Failed", Colors.red);
                                           }
                                         },
                                         style: ElevatedButton.styleFrom(

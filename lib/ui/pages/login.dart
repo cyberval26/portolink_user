@@ -92,7 +92,7 @@ class _LoginState extends State<Login> {
                                 isLoading = true;
                               });
                               await AuthServices.signIn(ctrlEmail.text, ctrlPassword.text).then((value) {
-                                if (value == "success") {
+                                if (value == "Success") {
                                   setState(() {
                                     isLoading = false;
                                   });

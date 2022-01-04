@@ -23,7 +23,7 @@ class AuthServices {
       'createdAt': dateNow,
       'updatedAt': dateNow,
     }).then((value) {
-      msg = "success";
+      msg = "Success";
     }).catchError((onError) {
       msg = onError;
     });
@@ -43,7 +43,7 @@ class AuthServices {
       'token': token,
       'updatedAt': dateNow,
     }).then((value) {
-      msg = "success";
+      msg = "Success";
     }).catchError((onError) {
       msg = onError;
     });
