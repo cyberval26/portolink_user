@@ -96,7 +96,7 @@ class _LoginState extends State<Login> {
                                   setState(() {
                                     isLoading = false;
                                   });
-                                  ActivityServices.showToast("Login Success", Colors.green);
+                                  ActivityServices.showToast("Login Success", Colors.grey);
                                   Navigator.pushReplacementNamed(context, MainMenu.routeName);
                                 } else {
                                   setState(() {
