@@ -56,7 +56,7 @@ class _PendingViewState extends State<PendingView> {
                                           Row(
                                             children: [
                                               const Icon(CupertinoIcons.news_solid),
-                                              Text("    " + pending.color, textAlign:TextAlign.center),
+                                              Text("    " "Warna : "+ pending.color, textAlign:TextAlign.center),
                                             ]
                                           ),
                                           const SizedBox(height:24),
