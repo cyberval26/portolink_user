@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         Login.routeName: (context) => const Login(),
         Register.routeName: (context) => const  Register(),
         MainMenu.routeName: (context) => const MainMenu(),
-        TemplateView.routeName: (context) => TemplateView(),
+        TemplateView.routeName: (context) => const TemplateView(),
         Dashboard.routeName: (context) => Dashboard(),
       },
     );
