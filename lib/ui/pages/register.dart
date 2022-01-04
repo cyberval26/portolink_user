@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        const SizedBox(height: 150),
+                        const SizedBox(height: 170),
                         TextFormField(
                           controller: ctrlName,
                           keyboardType: TextInputType.name,
@@ -103,7 +103,7 @@ class _RegisterState extends State<Register> {
                           obscureText: isVisible,
                           decoration: InputDecoration(
                             labelText: "Password",
-                            prefixIcon: const Icon(Icons.vpn_key),
+                            prefixIcon: const Icon(Icons.lock),
                             border: const OutlineInputBorder(),
                             suffixIcon: GestureDetector(
                               onTap: () {
