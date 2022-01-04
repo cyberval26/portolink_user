@@ -15,22 +15,6 @@ class ActivityServices {
       fontSize: 14
     );
   }
-  static void showToastBlack(String msg) {
-    Fluttertoast.showToast(
-      msg: msg,
-      backgroundColor: Colors.red,
-      textColor: Colors.black,  
-      fontSize: 14
-    );
-  }
-  static void showToastWhite(String msg) {
-    Fluttertoast.showToast(
-      msg: msg,
-      backgroundColor: Colors.grey[200],
-      textColor: Colors.white,
-      fontSize: 14
-    );
-  }
   static Container loadings() {
     return Container(
       alignment: Alignment.center,

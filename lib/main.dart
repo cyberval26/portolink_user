@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:portolink_user/ui/pages/pages.dart';
 import 'package:portolink_user/ui/widgets/widgets.dart';
 
@@ -14,6 +15,7 @@ void main() async {
   enablePlatformOverrideForDesktop();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -25,10 +27,10 @@ class MyApp extends StatelessWidget {
       title: 'Portolink',
       initialRoute: '/splash',
       routes: {
-        Splash.routeName: (context) => Splash(),
-        Login.routeName: (context) => Login(),
-        MainMenu.routeName: (context) => MainMenu(),
-        Register.routeName: (context) => Register(),
+        Splash.routeName: (context) => const Splash(),
+        Login.routeName: (context) => const Login(),
+        MainMenu.routeName: (context) => const MainMenu(),
+        Register.routeName: (context) => const Register(),
         TemplateView.routeName: (context) => TemplateView(),
         Dashboard.routeName: (context) => Dashboard(),
         AccountView.routeName: (context) => AccountView(),
