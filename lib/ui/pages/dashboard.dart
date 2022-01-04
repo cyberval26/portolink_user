@@ -56,8 +56,6 @@ class _DashboardState extends State<Dashboard> {
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, MyAccount.routeName);
                     },
                     child: const Text("My Account"),
                     style: ButtonStyle(

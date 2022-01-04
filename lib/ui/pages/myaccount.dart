@@ -2,7 +2,6 @@ part of 'pages.dart';
 
 class MyAccount extends StatefulWidget {
   const MyAccount({Key key}) : super(key: key);
-  static const String routeName = "/myaccount";
   @override
   _MyAccountState createState() => _MyAccountState();
 }

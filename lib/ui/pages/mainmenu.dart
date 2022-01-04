@@ -9,11 +9,11 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   bool isLoading = false;
   int _selectedIntex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
+  final List<Widget> _widgetOptions = <Widget>[
      ListTemplate(),
      PendingRequest(),
-     OurCountact(),
-     MyAccount()
+     const OurCountact(),
+     const MyAccount()
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -34,11 +34,11 @@ class _MainMenuState extends State<MainMenu> {
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.event_note_rounded),
+              icon: Icon(Icons.list),
               label: "List template",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.note_add_rounded),
+              icon: Icon(Icons.pending),
               label: "Pending",
             ),
             BottomNavigationBarItem(

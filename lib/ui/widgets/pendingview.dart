@@ -1,20 +1,13 @@
 part of 'widgets.dart';
 
-
 class PendingView extends StatefulWidget {
-  static const String routeName = "/pendingview";
+  const PendingView({Key key, this.pending}) : super(key: key);
   final Pending pending;
-  PendingView({this.pending});
-
-
   @override
   _PendingViewState createState() => _PendingViewState();
 }
-
 class _PendingViewState extends State<PendingView> {
   bool isLoading = false;
-  //CollectionReference assignmentCollection = FirebaseFirestore.instance.collection("assignment");
-
   @override
   Widget build(BuildContext context) {
     Pending pending = widget.pending;

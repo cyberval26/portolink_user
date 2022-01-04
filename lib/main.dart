@@ -30,14 +30,10 @@ class MyApp extends StatelessWidget {
       routes: {
         Splash.routeName: (context) => const Splash(),
         Login.routeName: (context) => const Login(),
-        MainMenu.routeName: (context) => const MainMenu(),
         Register.routeName: (context) => const  Register(),
+        MainMenu.routeName: (context) => const MainMenu(),
         TemplateView.routeName: (context) => TemplateView(),
         Dashboard.routeName: (context) => Dashboard(),
-        MyAccount.routeName: (context) => MyAccount(),
-        OrderTemplate.routeName: (context) => const OrderTemplate(),
-        ListTemplate.routeName: (context) => ListTemplate(),
-        PendingRequest.routeName: (context) => PendingRequest(),
       },
     );
   }
