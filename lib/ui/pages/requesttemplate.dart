@@ -245,7 +245,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                   Pending pending = Pending("",widget.name,"",
                                       "",ctrlDesc.text,"","");
 
-                                  await OrderServices.addRequest(order, imageFile).then((value){
+                                  await OrderServices.addRequest(order, pending, imageFile).then((value){
                                     if(value == true){
                                       Fluttertoast.showToast(msg: "Add order succesfully !",
                                           backgroundColor: Colors.green);

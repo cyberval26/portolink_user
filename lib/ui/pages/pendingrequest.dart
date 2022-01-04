@@ -6,7 +6,7 @@ class PendingRequest extends StatefulWidget {
   _PendingRequestState createState() => _PendingRequestState();
 }
 class _PendingRequestState extends State<PendingRequest> {
-  CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pending");
+  CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pendings");
   Widget buildBody(){
     return SizedBox(
       width: double.infinity,
