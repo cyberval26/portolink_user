@@ -10,9 +10,9 @@ class _MainMenuState extends State<MainMenu> {
   bool isLoading = false;
   int _selectedIntex = 0;
   final List<Widget> _widgetOptions = <Widget>[
+     const OurCountact(),
      const ListTemplate(),
      const PendingRequest(),
-     const OurCountact(),
      const MyAccount()
   ];
   void _onItemTapped(int index) {
@@ -27,9 +27,9 @@ class _MainMenuState extends State<MainMenu> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.help), label: "Help"),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: "List template"),
           BottomNavigationBarItem(icon: Icon(Icons.pending), label: "Pending"),
-          BottomNavigationBarItem(icon: Icon(Icons.help), label: "Help"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
         ],
         currentIndex: _selectedIntex,

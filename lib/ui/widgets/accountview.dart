@@ -7,6 +7,28 @@ class AccountView extends StatefulWidget {
   @override
   _AccountViewState createState() => _AccountViewState();
 }
+
+_prefixIcon(IconData iconData) {
+  return ConstrainedBox(
+    constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+    child: Container(
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+        margin: const EdgeInsets.only(right: 8.0),
+        decoration: BoxDecoration(
+            color: Colors.blue[100].withOpacity(0.2),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+                bottomRight: Radius.circular(10.0))),
+        child: Icon(
+          iconData,
+          size: 20,
+          color: Colors.blue,
+        )),
+  );
+}
+
 class _AccountViewState extends State<AccountView> {
   bool isLoading = false;
   @override
@@ -39,28 +61,58 @@ class _AccountViewState extends State<AccountView> {
               ),
               const SizedBox(height: 15),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.person, color: Colors.black54),
-                  Text(
-                    "  " + users.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24)
-                  )
-                ]
+                  _prefixIcon(Icons.email),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Name',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18.0,
+                              color: Colors.black)),
+                      SizedBox(height: 1),
+                      Text(users.name),
+                    ],
+                  ),
+                ],
               ),
               const SizedBox(height: 15),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.phone, color: Colors.black54),
-                  Text(
-                    "  " + users.phone,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24),
-                  )
-                ]
-              )
+                  _prefixIcon(Icons.phone),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Phone',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18.0,
+                              color: Colors.black)),
+                      SizedBox(height: 1),
+                      Text(users.phone),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              Row(
+                children: [
+                  _prefixIcon(Icons.email),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Email',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18.0,
+                              color: Colors.black)),
+                      SizedBox(height: 1),
+                      Text(users.email),
+                    ],
+                  ),
+                ],
+              ),
             ]
           )
         ),

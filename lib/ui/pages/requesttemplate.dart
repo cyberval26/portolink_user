@@ -72,7 +72,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
               label: Text("camera"),
               style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white,
-                  primary: Colors.teal[200],
+                  primary: Colors.blue,
                 elevation: 0
               ),
             ),
@@ -84,7 +84,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
               label: Text("gallery"),
               style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white,
-                  primary: Colors.teal[200],
+                  primary: Colors.blue,
                   elevation: 0
               ),
             ),
@@ -135,35 +135,84 @@ class _RequestTemplateState extends State<RequestTemplate> {
                       child:  Column(
                         children: [
                           SizedBox(height:15),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.person, color: Colors.black54,),
-                              Text(" "+widget.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
-                            ],
+                          Image.network(
+                            widget.photo,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
                           ),
                           SizedBox(height:15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.email, color: Colors.black54,),
-                              Text("  "+widget.desc, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text(" "+widget.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold),),
                             ],
                           ),
+                          const SizedBox(height: 12),
+                          Text(ActivityServices.toIDR(widget.price) ,textAlign: TextAlign.center, style: TextStyle(fontSize: 24)),
                           SizedBox(height:15),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.phone, color: Colors.black54,),
-                              Text("  "+widget.price, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Expanded(
+                                child:(
+                                    Text("  "+widget.desc, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),)
+                                ),
+                              ),
                             ],
                           ),
+                          SizedBox(height:45),
+                          Container(
+                            color: Colors.blue,
+                            padding: EdgeInsets.all(10),
+                            child:Column(
+                                children:[
+                                  Text("Cara Pemesanan", textAlign: TextAlign.center, style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold,color: Colors.white),),
+                                  const SizedBox(height: 12),
+                                  Text("1.Pembeli akan memasukkan data pembelian yang tersedia", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("2.Pembeli dapat memasukkan desain seperti apa yang dinginkan untuk template ini", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("3.Active contact dapat disi dengan media sosial line, whatsapp, gmail ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("4.Pembeli dimohon untuk mencantukan foto contoh referensi yang dinginkan,"
+                                      " untuk penambahan / update foto referensi akan dilakukan lebih lanjut melalui kontak personal", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("5.Pembeli akan mengkonfirmasi pesanan dengan menekan tombol pesan", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("6.Seletah order terkirim, pembeli akan dihubungi lewat"
+                                      " contact yang telah dicantumkan untuk proses lebih lanjutnya", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("7.Pembayaran akan digunakan melalui aplikasi e-wallet dan m-banking ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                  SizedBox(height:5),
+                                  Text("8.Barang pesanan akan dikirim melalui apikasi melalui menu pending ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                ]
+                            ),
+                          ),
+                          SizedBox(height:15),
+                          SizedBox(height:15),
+                          Text("Form Pemesanan", textAlign: TextAlign.center, style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold),),
                           SizedBox(height:24),
                           TextFormField(
                             controller:  ctrlDesc,
                             keyboardType:  TextInputType.name,
                             decoration: InputDecoration(
-                              labelText:"description",
+                              labelText:"description design",
+                              prefixIcon: Icon(Icons.label),
+                              //  border: OutlineInputBorder(),
+                            ),
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value){
+                              if(value.isEmpty){
+                                return"Please fill the field!";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
+                          TextFormField(
+                            controller:  ctrlContact,
+                            keyboardType:  TextInputType.name,
+                            decoration: InputDecoration(
+                              labelText:"Active Contact",
                               prefixIcon: Icon(Icons.label),
                               //  border: OutlineInputBorder(),
                             ),
@@ -224,10 +273,19 @@ class _RequestTemplateState extends State<RequestTemplate> {
                           SizedBox(height: 24),
                           GestureDetector(
                             onTap :(){
-                              Navigator.pushReplacementNamed(context, Register.routeName);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OrderTemplate(
+                                        tid: widget.tid,
+                                        name: widget.name,
+                                        desc: widget.desc,
+                                        price: widget.price,
+                                        photo :widget.photo,
+                                      )));
                             },
-                            child :const Text("memiliki request sendiri",
-                              style : TextStyle(color: Colors.tealAccent,
+                            child :const Text("Ingin memilih template yang sudah ada ?",
+                              style : TextStyle(color: Colors.deepPurple,
                                   fontSize : 16
                               ),
                             ),
@@ -240,8 +298,8 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                   setState(() {
                                     isLoading = true;
                                   });
-                                  Order order = Order("",widget.name,ctrlDesc.text,
-                                      "","","","");
+                                  Order order = Order("",widget.name,"",
+                                      ctrlContact.text,ctrlDesc.text,"","");
                                   Pending pending = Pending("",widget.name,"",
                                       "", "", ctrlDesc.text,"", "");
 
@@ -253,7 +311,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                       setState(() {
                                         isLoading = false;
                                       });
-                                     // Navigator.pushReplacementNamed(context, Dashboard.routeName);
+                                      Navigator.pushReplacementNamed(context, MainMenu.routeName);
                                     }else{
                                       ActivityServices.showToast("Add Order failed", Colors.red);
                                     }
@@ -283,7 +341,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                               label: Text("submit order"),
                               style : ElevatedButton.styleFrom(
                                 onPrimary: Colors.white,
-                                primary: Colors.teal[200],
+                                primary: Colors.blue,
                                 elevation: 4,
                               )
                           ),

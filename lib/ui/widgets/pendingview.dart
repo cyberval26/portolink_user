@@ -53,56 +53,51 @@ class _PendingViewState extends State<PendingView> {
                                     children: [
                                       Column(
                                         children: [
-                                          Row(
-                                            children: [
-                                              const Icon(CupertinoIcons.news_solid),
-                                              Text("Warna : " + pending.color),
-                                            ]
-                                          ),
-                                          const SizedBox(height:24),
-                                          Row(
-                                            children: [
-                                              Flexible(
-                                                child:Container(
-                                                  alignment:Alignment.center,
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Status : " + pending.status, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30))
-                                                    ]
-                                                  )
-                                                )
-                                              )
-                                            ]
-                                          ),
-                                          const SizedBox(height:36),
-                                          Row(
-                                            children: [
-                                              Flexible(
-                                                child:Container(
-                                                  alignment:Alignment.center,
-                                                  child: Column(
-                                                    children: [
-                                                      SelectableText("Link Download : " + pending.link)
-                                                    ]
-                                                  )
-                                                )
-                                              )
-                                            ]
-                                          ),
-                                          const SizedBox(height:36),
-                                          Row(
-                                            children: [
-                                              Flexible(
-                                                child:Container(
-                                                  alignment:Alignment.center,
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Reason : " + pending.reason)
-                                                    ]
-                                                  )
-                                                )
-                                              )
-                                            ]
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              const SizedBox(height: 48),
+                                              FadeInImage(
+                                                placeholder: NetworkImage(""),
+                                                image: NetworkImage(""),
+                                                imageErrorBuilder: (ctx, exception, stackTrace) {
+                                                  return Container();
+                                                },
+                                              ),
+                                              const SizedBox(height: 24),
+                                              Text('Color',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: 15.0,
+                                                      color: Colors.black)),
+                                              SizedBox(height: 1),
+                                              Text(pending.color),
+                                              const SizedBox(height: 24),
+                                              Text('Request Description',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: 15.0,
+                                                      color: Colors.black)),
+                                              SizedBox(height: 1),
+                                              Text(pending.description),
+                                              const SizedBox(height: 24),
+                                              Text('Link Protofolio Website',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: 15.0,
+                                                      color: Colors.black)),
+                                              SizedBox(height: 1),
+                                              SelectableText(pending.link),
+                                              const SizedBox(height: 24),
+                                              Text('Reject Reason',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: 15.0,
+                                                      color: Colors.black)),
+                                              SizedBox(height: 1),
+                                              Text(pending.reason),
+
+                                            ],
                                           ),
                                           const SizedBox(height:50),
                                         ]
@@ -122,6 +117,7 @@ class _PendingViewState extends State<PendingView> {
                                           bool hsl = await PendingServices.deletePending(pending.pendingId);
                                           if (hsl) {
                                             ActivityServices.showToast("Delete Success", Colors.grey);
+                                            Navigator.pushReplacementNamed(context, MainMenu.routeName);
                                           } else {
                                             ActivityServices.showToast("Delete Failed", Colors.red);
                                           }

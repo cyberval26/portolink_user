@@ -72,7 +72,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
               label: Text("camera"),
               style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white,
-                  primary: Colors.teal[200],
+                  primary: Colors.blue,
                 elevation: 0
               ),
             ),
@@ -84,7 +84,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
               label: Text("gallery"),
               style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white,
-                  primary: Colors.teal[200],
+                  primary: Colors.blue,
                   elevation: 0
               ),
             ),
@@ -139,29 +139,53 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             fit: BoxFit.cover,
                             width: double.infinity,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.person, color: Colors.black54,),
-                              Text(" "+widget.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
-                            ],
-                          ),
                           SizedBox(height:15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.email, color: Colors.black54,),
-                              Text("  "+widget.desc, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Text(" "+widget.name, textAlign: TextAlign.center, style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold),),
                             ],
                           ),
+                          const SizedBox(height: 12),
+                          Text(ActivityServices.toIDR(widget.price) ,textAlign: TextAlign.center, style: TextStyle(fontSize: 24)),
                           SizedBox(height:15),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.phone, color: Colors.black54,),
-                              Text("  "+ActivityServices.toIDR(widget.price), textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+                              Expanded(
+                                child:(
+                                    Text("  "+widget.desc, textAlign: TextAlign.center, style: TextStyle(fontSize: 24),)
+                                ),
+                              ),
                             ],
                           ),
+                          SizedBox(height:45),
+                          Container(
+                            color: Colors.blue,
+                            padding: EdgeInsets.all(10),
+                            child:Column(
+                              children:[
+                                Text("Cara Pemesanan", textAlign: TextAlign.center, style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold,color: Colors.white),),
+                                const SizedBox(height: 12),
+                                Text("1.Pembeli akan memasukkan data pembelian yang tersedia", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                SizedBox(height:5),
+                                Text("2.Color untuk digunakan untuk memilih warna yang pembeli inginkan dari warna template yang tersedia", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                SizedBox(height:5),
+                                Text("3.Active contact dapat disi dengan media sosial line, whatsapp, gmail ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                SizedBox(height:5),
+                                Text("4.Pembeli akan mengkonfirmasi pesanan dengan menekan tombol pesan", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                SizedBox(height:5),
+                                Text("5.Seletah order terkirim, pembeli akan dihubungi lewat"
+                                    " contact yang telah dicantumkan untuk proses lebih lanjutnya", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                SizedBox(height:5),
+                                Text("6.Pembayaran akan digunakan melalui aplikasi e-wallet dan m-banking ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                                SizedBox(height:5),
+                                Text("7.Barang pesanan akan dikirim melalui apikasi melalui menu pending ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24,color: Colors.white),),
+                              ]
+                            ),
+                          ),
+                          SizedBox(height:15),
+                          SizedBox(height:15),
+                          Text("Form Pemesanan", textAlign: TextAlign.center, style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold),),
                           SizedBox(height:24),
                           TextFormField(
                             controller:  ctrlColor,
@@ -214,8 +238,8 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                       )));
                              // Navigator.pushReplacementNamed(context, Register.routeName);
                             },
-                            child :const Text("memiliki request sendiri",
-                              style : TextStyle(color: Colors.tealAccent,
+                            child :const Text("Memiliki request sendiri ?",
+                              style : TextStyle(color: Colors.deepPurple,
                                   fontSize : 16
                               ),
                             ),
@@ -241,7 +265,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                       setState(() {
                                         isLoading = false;
                                       });
-                                     // Navigator.pushReplacementNamed(context, Dashboard.routeName);
+                                      Navigator.pushReplacementNamed(context, MainMenu.routeName);
                                     }else{
                                       ActivityServices.showToast("Add Order failed", Colors.red);
                                     }
@@ -270,7 +294,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                               label: Text("submit order"),
                               style : ElevatedButton.styleFrom(
                                 onPrimary: Colors.white,
-                                primary: Colors.teal[200],
+                                primary: Colors.blue,
                                 elevation: 4,
                               )
                           ),
