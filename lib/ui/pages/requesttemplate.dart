@@ -243,7 +243,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                   Order order = Order("",widget.name,ctrlDesc.text,
                                       "","","","");
                                   Pending pending = Pending("",widget.name,"",
-                                      "",ctrlDesc.text,"","");
+                                      "", "", ctrlDesc.text,"", "");
 
                                   await OrderServices.addRequest(order, pending, imageFile).then((value){
                                     if(value == true){

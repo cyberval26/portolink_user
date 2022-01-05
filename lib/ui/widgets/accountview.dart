@@ -2,6 +2,7 @@ part of "widgets.dart";
 
 class AccountView extends StatefulWidget {
   const AccountView({Key key, this.users}) : super(key: key);
+  static const String routeName = "/accountview";
   final Users users;
   @override
   _AccountViewState createState() => _AccountViewState();
@@ -32,7 +33,6 @@ class _AccountViewState extends State<AccountView> {
                       id: users.uid,
                       name: users.name,
                       phone: users.phone,
-                      email: users.email,
                     )
                   ));
                 }
@@ -46,18 +46,6 @@ class _AccountViewState extends State<AccountView> {
                     "  " + users.name,
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 24)
-                  )
-                ]
-              ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.email, color: Colors.black54),
-                  Text(
-                    "  " + users.email,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24),
                   )
                 ]
               ),

@@ -230,7 +230,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                   });
                                   Order order = Order("",widget.name,ctrlColor.text,
                                       ctrlContact.text,"","","");
-                                  Pending pending = Pending("",widget.name,"",
+                                  Pending pending = Pending("",widget.name,"", "",
                                       ctrlColor.text,"","","");
 
                                   await OrderServices.addOrder(order,pending, imageFile).then((value){

@@ -28,6 +28,7 @@ class _PendingRequestState extends State<PendingRequest> {
                   doc['pendingId'],
                   doc['templateName'],
                   doc['link'],
+                  doc['reason'],
                   doc['color'],
                   doc['description'],
                   doc['status'],

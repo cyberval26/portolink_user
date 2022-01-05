@@ -10,8 +10,8 @@ class _MainMenuState extends State<MainMenu> {
   bool isLoading = false;
   int _selectedIntex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-     ListTemplate(),
-     PendingRequest(),
+     const ListTemplate(),
+     const PendingRequest(),
      const OurCountact(),
      const MyAccount()
   ];
@@ -21,39 +21,20 @@ class _MainMenuState extends State<MainMenu> {
     });
   }
   @override
-  void InitState() {
-    super.initState();
-  }
-  @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIntex),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              label: "List template",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.pending),
-              label: "Pending",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.phone),
-              label: "Our Contact",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "Account",
-            ),
-          ],
-          currentIndex: _selectedIntex,
-          onTap: _onItemTapped,
-        ),
-      );
-    }
+    return Scaffold(
+      body: Center(child: _widgetOptions.elementAt(_selectedIntex)),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: "List template"),
+          BottomNavigationBarItem(icon: Icon(Icons.pending), label: "Pending"),
+          BottomNavigationBarItem(icon: Icon(Icons.help), label: "Help"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+        ],
+        currentIndex: _selectedIntex,
+        onTap: _onItemTapped,
+      ),
+    );
   }
-
+}

@@ -56,7 +56,7 @@ class _PendingViewState extends State<PendingView> {
                                           Row(
                                             children: [
                                               const Icon(CupertinoIcons.news_solid),
-                                              Text("    " "Warna : "+ pending.color, textAlign:TextAlign.center),
+                                              Text("Warna : " + pending.color),
                                             ]
                                           ),
                                           const SizedBox(height:24),
@@ -67,14 +67,44 @@ class _PendingViewState extends State<PendingView> {
                                                   alignment:Alignment.center,
                                                   child: Column(
                                                     children: [
-                                                      Text("Status : " + pending.status, textAlign: TextAlign.left, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+                                                      Text("Status : " + pending.status, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30))
                                                     ]
                                                   )
                                                 )
                                               )
                                             ]
                                           ),
-                                          const SizedBox(height:200),
+                                          const SizedBox(height:36),
+                                          Row(
+                                            children: [
+                                              Flexible(
+                                                child:Container(
+                                                  alignment:Alignment.center,
+                                                  child: Column(
+                                                    children: [
+                                                      SelectableText("Link Download : " + pending.link)
+                                                    ]
+                                                  )
+                                                )
+                                              )
+                                            ]
+                                          ),
+                                          const SizedBox(height:36),
+                                          Row(
+                                            children: [
+                                              Flexible(
+                                                child:Container(
+                                                  alignment:Alignment.center,
+                                                  child: Column(
+                                                    children: [
+                                                      Text("Reason : " + pending.reason)
+                                                    ]
+                                                  )
+                                                )
+                                              )
+                                            ]
+                                          ),
+                                          const SizedBox(height:50),
                                         ]
                                       )
                                     ]
@@ -86,9 +116,9 @@ class _PendingViewState extends State<PendingView> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ElevatedButton.icon(
-                                        icon: const Icon(CupertinoIcons.trash),
+                                        icon: const Icon(CupertinoIcons.clear),
                                         label: const Text("Delete"),
-                                        onPressed: ()async {
+                                        onPressed: () async {
                                           bool hsl = await PendingServices.deletePending(pending.pendingId);
                                           if (hsl) {
                                             ActivityServices.showToast("Delete Success", Colors.grey);
@@ -96,10 +126,7 @@ class _PendingViewState extends State<PendingView> {
                                             ActivityServices.showToast("Delete Failed", Colors.red);
                                           }
                                         },
-                                        style: ElevatedButton.styleFrom(
-                                          onPrimary: Colors.white,
-                                          primary: Colors.deepPurple
-                                        )
+                                        style: ElevatedButton.styleFrom(primary: Colors.red)
                                       )
                                     ]
                                   )

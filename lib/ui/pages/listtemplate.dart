@@ -1,6 +1,4 @@
-
 part of 'pages.dart';
-
 
 class ListTemplate extends StatefulWidget {
   const ListTemplate({Key key}) : super(key: key);
@@ -10,21 +8,21 @@ class ListTemplate extends StatefulWidget {
 }
 class _ListTemplateState extends State<ListTemplate> {
   CollectionReference templateCollection = FirebaseFirestore.instance.collection("Templates");
-  Widget buildBody(){
+  Widget buildBody() {
     return SizedBox(
       width: double.infinity,
       height: double.infinity,
-      child : StreamBuilder<QuerySnapshot>(
+      child: StreamBuilder<QuerySnapshot>(
         stream: templateCollection.snapshots(),
-        builder : (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
-          if(snapshot.hasError){
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
             return const Text("Failed to load data!");
           }
-          if (snapshot.connectionState == ConnectionState.waiting){
+          else if (snapshot.connectionState == ConnectionState.waiting) {
             return ActivityServices.loadings();
           }
           return ListView(
-            children : snapshot.data.docs.map((DocumentSnapshot doc){
+            children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Template template;
               template = Template(
                 doc['tid'],
@@ -33,10 +31,10 @@ class _ListTemplateState extends State<ListTemplate> {
                 doc['price'],
                 doc['photo'],
               );
-              return TemplateView(template:template);
+              return TemplateView(template: template);
             }).toList(),
           );
-        },
+        }
       )
     );
   }
@@ -45,6 +43,6 @@ class _ListTemplateState extends State<ListTemplate> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: buildBody(),
-      );
+    );
   }
 }
