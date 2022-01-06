@@ -36,7 +36,7 @@ class _PendingViewState extends State<PendingView> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    icon: const Icon(CupertinoIcons.ellipsis_circle_fill),
+                    icon: const Icon(CupertinoIcons.shopping_cart),
                     color: Colors.blue,
                     onPressed: () {
                       showModalBottomSheet(
@@ -64,19 +64,25 @@ class _PendingViewState extends State<PendingView> {
                                                   return Container();
                                                 }
                                               ),
+                                              const Text('Pesanan Anda', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24, color: Colors.blue)),
+                                              const SizedBox(height: 24),
+                                              const Text('Status Pesanan', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const SizedBox(height: 1),
+                                              Text(pending.status),
                                               const SizedBox(height: 24),
                                               const Text('Color', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
                                               const SizedBox(height: 1),
+                                              Text(pending.color),
                                               const SizedBox(height: 24),
                                               const Text('Request Description', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
                                               const SizedBox(height: 1),
                                               Text(pending.description),
                                               const SizedBox(height: 24),
-                                              const Text('Link Protofolio Website', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const Text('Link Portofolio Website', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
                                               const SizedBox(height: 1),
                                               SelectableText(pending.link),
                                               const SizedBox(height: 24),
-                                              const Text('Reject Reason', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              Text('Reject Reason', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
                                               const SizedBox(height: 1),
                                               Text(pending.reason)
                                             ]

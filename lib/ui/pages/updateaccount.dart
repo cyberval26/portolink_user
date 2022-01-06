@@ -120,7 +120,7 @@ class _UpdateAccountState extends State<UpdateAccount> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                Navigator.pushReplacementNamed(context, AccountView.routeName);
+                                Navigator.pushReplacementNamed(context, MainMenu.routeName);
                               } else {
                                 ActivityServices.showToast("Update failed", Colors.red);
                               }

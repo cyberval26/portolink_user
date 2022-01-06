@@ -94,14 +94,15 @@ class _RequestTemplateState extends State<RequestTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Design Request"),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pushReplacementNamed(context, ListTemplate.routeName),
-        )
-      ),
-      resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text("Request Template"),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pushReplacementNamed(context, MainMenu.routeName),
+            )
+          // centerTitle: true
+        ),
+        resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -181,7 +182,7 @@ class _RequestTemplateState extends State<RequestTemplate> {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            "3.Active contact dapat disi dengan media sosial line, whatsapp, gmail ",
+                            "3.Active contact dapat diisi dengan media sosial line, whatsapp, gmail ",
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 24, color: Colors.white)
                           ),
@@ -328,36 +329,25 @@ class _RequestTemplateState extends State<RequestTemplate> {
                           setState(() {
                             isLoading = true;
                           });
-                          Order order = Order("", widget.name, "", ctrlContact.text, ctrlDesc.text, "", "");
-                          Pending pending = Pending("", widget.name, "", "", "", ctrlDesc.text, "", "");
+                          Order order = Order("-", widget.name, "-", ctrlContact.text, ctrlDesc.text, "-", "-");
+                          Pending pending = Pending("-", widget.name, "-", "-", "-", ctrlDesc.text, "-", "-");
                           await OrderServices.addRequest(order, pending, imageFile).then((value) {
                             if (value == true) {
                               Fluttertoast.showToast(
                                 msg: "Add Order Success",
                                 backgroundColor: Colors.green
                               );
-                              clearForm();
-                              setState(() {
-                                isLoading = false;
-                              });
-                              Navigator.pushReplacementNamed(context, ListTemplate.routeName);
-                            } else {
-                              ActivityServices.showToast("Add Order Failed", Colors.red);
-                            }
-                          });
-                          await PendingServices.addPending(pending, imageFile).then((value) {
-                            if (value == true) {
                               Fluttertoast.showToast(
-                                msg: "You can check your order in pending list",
-                                backgroundColor: Colors.green
+                                  msg: "You can check your order in pending list",
+                                  backgroundColor: Colors.green
                               );
                               clearForm();
                               setState(() {
                                 isLoading = false;
                               });
-                              Navigator.pushReplacementNamed(context, ListTemplate.routeName);
+                              Navigator.pushReplacementNamed(context, MainMenu.routeName);
                             } else {
-                              ActivityServices.showToast("Add Order failed", Colors.red);
+                              ActivityServices.showToast("Add Order Failed", Colors.red);
                             }
                           });
                         } else {

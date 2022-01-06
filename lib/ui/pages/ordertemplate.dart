@@ -94,14 +94,11 @@ class _OrderTemplateState extends State<OrderTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Order Template"),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pushReplacementNamed(context, ListTemplate.routeName),
-        )
-      ),
-      resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+            title: const Text("Order Template"),
+           // centerTitle: true
+        ),
+        resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -179,7 +176,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             ),
                             SizedBox(height: 5),
                             Text(
-                              "3.Active contact dapat disi dengan media sosial line, whatsapp, gmail ",
+                              "3.Active contact dapat diisi dengan media sosial line, whatsapp, gmail ",
                               textAlign: TextAlign.left,
                               style: TextStyle(fontSize: 24, color: Colors.white)
                             ),
@@ -279,8 +276,8 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             setState(() {
                               isLoading = true;
                             });
-                            Order order = Order("", widget.name, ctrlColor.text, ctrlContact.text, "", "", "");
-                            Pending pending = Pending("", widget.name, "", "", ctrlColor.text, "", "", "");
+                            Order order = Order("-", widget.name, ctrlColor.text, ctrlContact.text, "-", "-", "-");
+                            Pending pending = Pending("-", widget.name, "-", "-", ctrlColor.text, "-", "-", "-");
                             await OrderServices.addOrder(order, pending, imageFile).then((value) {
                               if (value == true) {
                                 Fluttertoast.showToast(
@@ -291,7 +288,7 @@ class _OrderTemplateState extends State<OrderTemplate> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                Navigator.pushReplacementNamed(context, ListTemplate.routeName);
+                                Navigator.pushReplacementNamed(context, MainMenu.routeName);
                               } else {
                                 ActivityServices.showToast("Add Order failed", Colors.red);
                               }
