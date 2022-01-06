@@ -28,7 +28,19 @@ class _HelpState extends State<Help> {
             const SizedBox(height:5),
             const Text("4.Seletah order terkirim, pembeli akan dihubungi lewat"" contact yang telah dicantumkan untuk proses lebih lanjutnya", textAlign: TextAlign.left, style: TextStyle(fontSize: 24)),
             const SizedBox(height:5),
-            const Text("5.Pembayaran akan digunakan melalui aplikasi e-wallet dan m-banking ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24)),
+            const Text("5.Pembayaran akan digunakan melalui aplikasi e-wallet dan m-banking ini", textAlign: TextAlign.left, style: TextStyle(fontSize: 24)),
+            SizedBox(height: 5),
+            const Text(
+              "BCA: example 3456781123",
+              textAlign: TextAlign.left,
+              style: TextStyle(fontSize: 24, color: Colors.black),
+            ),
+            SizedBox(height: 5),
+            const Text(
+              "OVO: example 4442238097 ",
+              textAlign: TextAlign.left,
+              style: TextStyle(fontSize: 24, color: Colors.black),
+            ),
             const SizedBox(height:5),
             const Text("6.Barang pesanan akan dikirim melalui apikasi melalui menu pending ", textAlign: TextAlign.left, style: TextStyle(fontSize: 24)),
             const SizedBox(height:15)
