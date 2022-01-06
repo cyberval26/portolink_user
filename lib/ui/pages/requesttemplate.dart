@@ -214,6 +214,18 @@ class _RequestTemplateState extends State<RequestTemplate> {
                           ),
                           SizedBox(height: 5),
                           Text(
+                            "BCA: example 3456781123",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 24, color: Colors.white),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "OVO: example 4442238097 ",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 24, color: Colors.white),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
                             "8.Barang pesanan akan dikirim melalui apikasi melalui menu pending ",
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 24, color: Colors.white)

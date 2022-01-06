@@ -195,7 +195,19 @@ class _OrderTemplateState extends State<OrderTemplate> {
                             ),
                             SizedBox(height: 5),
                             Text(
-                              "6.Pembayaran akan digunakan melalui aplikasi e-wallet dan m-banking ",
+                              "6.Pembayaran akan digunakan melalui aplikasi e-wallet dan m-banking ini ",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 24, color: Colors.white),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "BCA: example 3456781123",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 24, color: Colors.white),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "OVO: example 4442238097 ",
                               textAlign: TextAlign.left,
                               style: TextStyle(fontSize: 24, color: Colors.white),
                             ),
