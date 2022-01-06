@@ -79,7 +79,7 @@ class OrderServices {
       'createdAt': dateNow
     });
     if (orderDocument != null) {
-      ref = FirebaseStorage.instance.ref().child("images").child(orderDocument.id + "jpg");
+      ref = FirebaseStorage.instance.ref().child("DesignRequestPhotos").child(orderDocument.id + "jpg");
       uploadTask = ref.putFile(File(imgFile.path));
       await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
       orderCollection.doc(orderDocument.id).update({

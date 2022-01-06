@@ -17,7 +17,7 @@ class AuthServices {
       'name': users.name,
       'phone': users.phone,
       'email': users.email,
-      'password': users.password,
+      'password': sha512.convert(utf8.encode(users.password)).toString(),
       'token': token,
       'createdAt': dateNow,
       'updatedAt': dateNow

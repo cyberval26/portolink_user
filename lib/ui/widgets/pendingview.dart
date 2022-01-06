@@ -82,7 +82,7 @@ class _PendingViewState extends State<PendingView> {
                                               const SizedBox(height: 1),
                                               SelectableText(pending.link),
                                               const SizedBox(height: 24),
-                                              Text('Reject Reason', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const Text('Reject Reason', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
                                               const SizedBox(height: 1),
                                               Text(pending.reason)
                                             ]

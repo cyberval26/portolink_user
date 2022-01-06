@@ -94,15 +94,14 @@ class _RequestTemplateState extends State<RequestTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Request Template"),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pushReplacementNamed(context, MainMenu.routeName),
-            )
-          // centerTitle: true
-        ),
-        resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: const Text("Request Template"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pushReplacementNamed(context, MainMenu.routeName)
+        )
+      ),
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -350,8 +349,8 @@ class _RequestTemplateState extends State<RequestTemplate> {
                                 backgroundColor: Colors.green
                               );
                               Fluttertoast.showToast(
-                                  msg: "You can check your order in pending list",
-                                  backgroundColor: Colors.green
+                                msg: "You can check your order in pending list",
+                                backgroundColor: Colors.green
                               );
                               clearForm();
                               setState(() {

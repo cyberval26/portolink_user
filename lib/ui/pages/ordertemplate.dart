@@ -96,7 +96,6 @@ class _OrderTemplateState extends State<OrderTemplate> {
     return Scaffold(
         appBar: AppBar(
             title: const Text("Order Template"),
-           // centerTitle: true
         ),
         resizeToAvoidBottomInset: false,
       body: SizedBox(
