@@ -146,7 +146,7 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToast("Register Success", Colors.grey[200]);
+                                ActivityServices.showToast("Register Success", Colors.grey);
                                 Navigator.pushReplacementNamed(context, Login.routeName);
                               } else {
                                 setState(() {
@@ -156,9 +156,8 @@ class _RegisterState extends State<Register> {
                               }
                             } else {
                               Fluttertoast.showToast(
-                                msg: "Please check the fields!",
-                                backgroundColor: Colors.red,
-                                textColor: Colors.black
+                                msg: "Please check all the fields",
+                                backgroundColor: Colors.red
                               );
                             }
                           },

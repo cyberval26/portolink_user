@@ -20,7 +20,7 @@ class _SplashState extends State<Splash> {
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
       Navigator.pushReplacementNamed(context, MainMenu.routeName);
-      ActivityServices.showToast("Welcome Back " + auth.currentUser.email, Colors.grey);
+      ActivityServices.showToast("Welcome Back, " + auth.currentUser.email, Colors.grey);
     } else {
       Navigator.pushReplacementNamed(context, Login.routeName);
     }
@@ -35,7 +35,7 @@ class _SplashState extends State<Splash> {
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [Image.asset("assets/images/portolink.png", height: 300)]
         )
-      ),
+      )
     );
   }
 }

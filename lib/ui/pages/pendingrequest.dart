@@ -2,6 +2,7 @@ part of 'pages.dart';
 
 class PendingRequest extends StatefulWidget {
   const PendingRequest({Key key}) : super(key: key);
+  static const String routeName = "/pending";
   @override
   _PendingRequestState createState() => _PendingRequestState();
 }

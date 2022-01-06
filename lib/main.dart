@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portolink_user/shared/shared.dart';
 import 'package:portolink_user/ui/pages/pages.dart';
-import 'package:portolink_user/ui/widgets/widgets.dart';
 
 void enablePlatformOverrideForDesktop() {
   if (!kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux)) {
@@ -32,9 +31,9 @@ class MyApp extends StatelessWidget {
         Login.routeName: (context) => const Login(),
         Register.routeName: (context) => const  Register(),
         MainMenu.routeName: (context) => const MainMenu(),
-        TemplateView.routeName: (context) => const TemplateView(),
-        Dashboard.routeName: (context) => Dashboard(),
-      },
+        ListTemplate.routeName: (context) => const ListTemplate(),
+        PendingRequest.routeName: (context) => const PendingRequest()
+      }
     );
   }
 }

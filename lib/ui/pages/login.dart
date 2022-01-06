@@ -106,7 +106,10 @@ class _LoginState extends State<Login> {
                                 }
                               });
                             } else {
-                              Fluttertoast.showToast(msg: "Please check the fields !", backgroundColor: Colors.red);
+                              Fluttertoast.showToast(
+                                msg: "Please check all the fields",
+                                backgroundColor: Colors.red
+                              );
                             }
                           },
                           icon: const Icon(Icons.login_rounded),

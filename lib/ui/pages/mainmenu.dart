@@ -10,7 +10,7 @@ class _MainMenuState extends State<MainMenu> {
   bool isLoading = false;
   int _selectedIntex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-     const OurCountact(),
+     const Help(),
      const ListTemplate(),
      const PendingRequest(),
      const MyAccount()

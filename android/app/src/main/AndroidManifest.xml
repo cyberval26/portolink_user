@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.portolink_user">
+    package="com.portolink.user">
    <application
-        android:label="Portolink User"
+        android:label="Portolink"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

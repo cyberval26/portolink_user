@@ -1,4 +1,4 @@
-package com.example.portolink_user
+package com.portolink.user
 
 import io.flutter.embedding.android.FlutterActivity
 

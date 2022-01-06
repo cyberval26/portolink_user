@@ -3,7 +3,6 @@ part of 'services.dart';
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
   static CollectionReference userCollection = FirebaseFirestore.instance.collection("Users");
-  static DocumentReference userDoc;
   static Future<String> signUp(Users users) async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
@@ -21,7 +20,7 @@ class AuthServices {
       'password': users.password,
       'token': token,
       'createdAt': dateNow,
-      'updatedAt': dateNow,
+      'updatedAt': dateNow
     }).then((value) {
       msg = "Success";
     }).catchError((onError) {
@@ -41,7 +40,7 @@ class AuthServices {
     await userCollection.doc(uid).update({
       'isOn': '1',
       'token': token,
-      'updatedAt': dateNow,
+      'updatedAt': dateNow
     }).then((value) {
       msg = "Success";
     }).catchError((onError) {
@@ -57,7 +56,7 @@ class AuthServices {
       userCollection.doc(uid).update({
         'isOn': '0',
         'token': '-',
-        'updateAt': dateNow,
+        'updateAt': dateNow
       });
     });
     return true;
@@ -67,8 +66,7 @@ class AuthServices {
     await Firebase.initializeApp();
     await userCollection.doc(id).update({
       'name': users.name,
-      'phone': users.phone,
-      'email': users.email,
+      'phone': users.phone
     }).then((value) {
       hsl = true;
     }).catchError((onError) {

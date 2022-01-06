@@ -3,7 +3,6 @@ part of 'widgets.dart';
 
 class TemplateView extends StatefulWidget {
   const TemplateView({Key key, this.template}) : super(key: key);
-  static const String routeName = "/templateview";
   final Template template;
   @override
   _TemplateViewState createState() => _TemplateViewState();

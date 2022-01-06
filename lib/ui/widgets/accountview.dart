@@ -7,28 +7,29 @@ class AccountView extends StatefulWidget {
   @override
   _AccountViewState createState() => _AccountViewState();
 }
-
 _prefixIcon(IconData iconData) {
   return ConstrainedBox(
     constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
     child: Container(
-        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
-        margin: const EdgeInsets.only(right: 8.0),
-        decoration: BoxDecoration(
-            color: Colors.blue[100].withOpacity(0.2),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-                bottomRight: Radius.circular(10.0))),
-        child: Icon(
-          iconData,
-          size: 20,
-          color: Colors.blue,
-        )),
+      padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+      margin: const EdgeInsets.only(right: 8.0),
+      decoration: BoxDecoration(
+        color: Colors.blue[100].withOpacity(0.2),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          bottomLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+          bottomRight: Radius.circular(10.0)
+        )
+      ),
+      child: Icon(
+        iconData,
+        size: 20,
+        color: Colors.blue,
+      )
+    )
   );
 }
-
 class _AccountViewState extends State<AccountView> {
   bool isLoading = false;
   @override
@@ -50,13 +51,16 @@ class _AccountViewState extends State<AccountView> {
                 icon: const Icon(CupertinoIcons.pencil),
                 label: const Text("Edit Data"),
                 onPressed: () async {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => UpdateAccount(
-                      id: users.uid,
-                      name: users.name,
-                      phone: users.phone,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UpdateAccount(
+                        id: users.uid,
+                        name: users.name,
+                        phone: users.phone
+                      )
                     )
-                  ));
+                  );
                 }
               ),
               const SizedBox(height: 15),
@@ -66,16 +70,18 @@ class _AccountViewState extends State<AccountView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Name',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18.0,
-                              color: Colors.black)),
-                      SizedBox(height: 1),
-                      Text(users.name),
-                    ],
-                  ),
-                ],
+                      const Text(
+                        'Name', style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18.0,
+                          color: Colors.black
+                        )
+                      ),
+                      const SizedBox(height: 1),
+                      Text(users.name)
+                    ]
+                  )
+                ]
               ),
               const SizedBox(height: 15),
               Row(
@@ -84,16 +90,18 @@ class _AccountViewState extends State<AccountView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Phone',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18.0,
-                              color: Colors.black)),
-                      SizedBox(height: 1),
-                      Text(users.phone),
-                    ],
-                  ),
-                ],
+                      const Text(
+                        'Phone', style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18.0,
+                          color: Colors.black
+                        )
+                      ),
+                      const SizedBox(height: 1),
+                      Text(users.phone)
+                    ]
+                  )
+                ]
               ),
               const SizedBox(height: 15),
               Row(
@@ -102,17 +110,19 @@ class _AccountViewState extends State<AccountView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Email',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18.0,
-                              color: Colors.black)),
-                      SizedBox(height: 1),
-                      Text(users.email),
-                    ],
-                  ),
-                ],
-              ),
+                      const Text('Email',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18.0,
+                          color: Colors.black
+                        )
+                      ),
+                      const SizedBox(height: 1),
+                      Text(users.email)
+                    ]
+                  )
+                ]
+              )
             ]
           )
         ),

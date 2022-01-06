@@ -58,48 +58,30 @@ class _PendingViewState extends State<PendingView> {
                                             children: <Widget>[
                                               const SizedBox(height: 48),
                                               FadeInImage(
-                                                placeholder: NetworkImage(""),
-                                                image: NetworkImage(""),
+                                                placeholder: const NetworkImage(""),
+                                                image: const NetworkImage(""),
                                                 imageErrorBuilder: (ctx, exception, stackTrace) {
                                                   return Container();
-                                                },
+                                                }
                                               ),
                                               const SizedBox(height: 24),
-                                              Text('Color',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 15.0,
-                                                      color: Colors.black)),
-                                              SizedBox(height: 1),
-                                              Text(pending.color),
+                                              const Text('Color', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const SizedBox(height: 1),
                                               const SizedBox(height: 24),
-                                              Text('Request Description',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 15.0,
-                                                      color: Colors.black)),
-                                              SizedBox(height: 1),
+                                              const Text('Request Description', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const SizedBox(height: 1),
                                               Text(pending.description),
                                               const SizedBox(height: 24),
-                                              Text('Link Protofolio Website',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 15.0,
-                                                      color: Colors.black)),
-                                              SizedBox(height: 1),
+                                              const Text('Link Protofolio Website', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const SizedBox(height: 1),
                                               SelectableText(pending.link),
                                               const SizedBox(height: 24),
-                                              Text('Reject Reason',
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 15.0,
-                                                      color: Colors.black)),
-                                              SizedBox(height: 1),
-                                              Text(pending.reason),
-
-                                            ],
+                                              const Text('Reject Reason', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                              const SizedBox(height: 1),
+                                              Text(pending.reason)
+                                            ]
                                           ),
-                                          const SizedBox(height:50),
+                                          const SizedBox(height:50)
                                         ]
                                       )
                                     ]
